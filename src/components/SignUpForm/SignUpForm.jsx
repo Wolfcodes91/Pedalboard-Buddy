@@ -16,6 +16,11 @@ export default class SignUpForm extends Component {
         });
     };
 
+    handleSubmit = (evt) => {
+        evt.preventDefault();
+        alert(JSON.stringify(this.state));
+    }
+
     // We must override the render method
     // The render method is the equivalent to a function-based component 
     // Its job is to return the UI

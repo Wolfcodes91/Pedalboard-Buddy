@@ -12,16 +12,17 @@ export default function App() {
   return (
     <main className="App">
       { user ? 
+      <>
+        <NavBar />
         <Routes>
           {}
           <Route path="/orders/new" element={<NewOrderPage/>} />
           <Route path="/orders" element={<OrderHistoryPage/>} />
         </Routes>
+      </>
         :
-        <AuthPage/>,
-        <NavBar />
+        <AuthPage/> 
       }
-
     </main>
   );
 }

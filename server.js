@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const router = require('./routes/api/users');
 
 // Always require and config near the top
 require('dotenv').config();
@@ -16,6 +17,8 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 //API routes here
+app.use('/api/users', require('./routes/api/users'));
+
 
 // 'Catch all' route
 app.get('/*', function(req, res) {

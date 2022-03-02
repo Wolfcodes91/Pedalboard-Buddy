@@ -9,7 +9,8 @@ export default class SignUpForm extends Component {
         confirm: '',
         error: '',
     };
-
+   
+    
     handleChange = (evt) => {
         this.setState({
             [evt.target.name]: evt.target.value,
@@ -28,7 +29,7 @@ export default class SignUpForm extends Component {
             // payload of the JSON web toke (JWT)
             const user = await signUp(formData);
             // Baby step
-            console.log(user);
+            this.props.setUser(user);
         } catch {
             // an error happened on the server  
             this.setState({ error: 'Sign Up Failed - Try Again' });

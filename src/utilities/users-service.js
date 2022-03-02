@@ -39,3 +39,9 @@ export async function login(credentials) {
     localStorage.setItem('token', token);
     return getUser()
 }
+
+export async function checkToken() {
+    // Just so that you don't forget how to use .then
+    return usersAPI.checkToken()
+    .then(dateStr => new Date(dateStr));
+}

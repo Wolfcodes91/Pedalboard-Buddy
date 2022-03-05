@@ -5,7 +5,7 @@ const pedalsCtrl = require('../../controllers/api/pedals');
 // GET /api/items
 router.get('/', pedalsCtrl.index);
 // POST /api/pedals/new
-router.post('/pedals/new', pedalsCtrl.create)
+router.post('/new', pedalsCtrl.create)
 // GET /api/items/:id
 // router.get('/:id', pedalsCtrl.show);
 

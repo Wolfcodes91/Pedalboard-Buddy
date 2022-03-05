@@ -13,6 +13,7 @@ async function index(req, res) {
 
 async function create(req, res) {
     console.log('create')
+    res.json()
 }
 
 // async function show(req, res) {

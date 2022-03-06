@@ -1,14 +1,4 @@
 /* CSS Custom Properties */
-:root {
-  --white: #FFFFFF;
-  --tan-1: #FBF9F6;
-  --tan-2: #E7E2DD;
-  --tan-3: #E2D9D1;
-  --tan-4: #D3C1AE;
-  --orange: #F67F00;
-  --text-light: #968c84;
-  --text-dark: #615954;
-}
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -21,7 +11,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: lightGrey;
   padding: 2vmin;
   height: 100vh;
 }
@@ -121,13 +111,13 @@ button, a.button {
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: lightblue;
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  border: .1vmin solid var(--tan-2);
-  border-radius: .5vmin;
+  border: .1vmin solid grey;
+  border-radius: 1vmin;
   outline: none;
   cursor: pointer;
 }

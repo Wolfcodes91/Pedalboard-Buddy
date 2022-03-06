@@ -1,8 +1,8 @@
 import "./Pedal.css"
 
-export default function Pedal({ pedal }) {
+export default function Pedal({ pedal, isSelected, handleSelectPedal }) {
     return(
-    <div className="pedalCard">
+    <div className={`pedal${isSelected ? ' selected' : ''}`} onClick={() => handleSelectPedal(pedal)}>
     <ul>
         <p>{pedal.brand}</p>
         <p>{pedal.name}</p>

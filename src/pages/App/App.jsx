@@ -9,6 +9,7 @@ import PedalList from "../../components/PedalList/PedalList";
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [pedalsList, setPedalsList] = useState([])
+  const [activePedal, setActivePedal] = useState(null);
 
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
@@ -20,9 +21,14 @@ export default function App() {
     async function getPedals() {
       const pedals = await pedalsAPI.getAll();
       setPedalsList(pedals) 
+      setActivePedal(pedals[0] || null);
     }
     getPedals();
   }, [])
+
+  function handleSelectPedal(pedal) {
+    setActivePedal(pedal);
+  }
 
 
   return (
@@ -34,7 +40,13 @@ export default function App() {
         :
         <AuthPage setUser={setUser} /> 
       }
-      <PedalList createPedal={createPedal} pedalsList={pedalsList} setPedalsList={setPedalsList}/>
+      <PedalList 
+        createPedal={createPedal} 
+        pedalsList={pedalsList} 
+        setPedalsList={setPedalsList}
+        handleSelectPedal={handleSelectPedal}
+        activePedal={activePedal}
+        />
     </main>
   );
 }

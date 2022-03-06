@@ -1,3 +1,25 @@
-.pedalCard {
-    border: solid 1px black;
+.pedal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-dark);
+    border: .4vmin solid tan;
+    border-radius: 1vmin;
+    cursor: pointer;
+    padding: 2vmin;
+    width: 20vmin;
 }
+
+.pedal.selected {
+    border-color: blue;
+    border-width: .5vmin;
+    cursor: default;
+    font-weight: bold;
+  }
+  
+.pedal:not(.selected):hover {
+    border-color: blue;
+    border-width: .4vmin;
+    font-weight: bold;
+  }

@@ -7,6 +7,6 @@ router.get('/', pedalsCtrl.index);
 // POST /api/pedals/new
 router.post('/new', pedalsCtrl.create)
 // GET /api/items/:id
-// router.get('/:id', pedalsCtrl.show);
+router.get('/:id', pedalsCtrl.show);
 
 module.exports = router;

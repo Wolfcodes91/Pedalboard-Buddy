@@ -1,5 +1,12 @@
-export default function Pedal({ newPedal, setNewPedal }) {
+import "./Pedal.css"
+
+export default function Pedal({ pedal }) {
     return(
-        <h1>I am a pedal</h1>
+    <div className="pedalCard">
+    <ul>
+        <p>{pedal.brand}</p>
+        <p>{pedal.name}</p>
+    </ul>
+    </div>
     )
 }

@@ -1,4 +1,4 @@
-import { useState } from "react" 
+import { useState, useEffect } from "react" 
 import './App.css';
 import * as pedalsAPI from "../../utilities/pedals-api" 
 import AuthPage from "../AuthPage/AuthPage";
@@ -11,10 +11,19 @@ export default function App() {
   const [pedalsList, setPedalsList] = useState([])
 
   async function createPedal(formData) {
-    console.log('level1')
     const pedal = await pedalsAPI.newPedalCreate(formData)
     setPedalsList([...pedalsList, pedal])
+    console.log(pedalsList)
   }
+
+  useEffect(function(){
+    async function getPedals() {
+      const pedals = await pedalsAPI.getAll();
+      setPedalsList(pedals) 
+    }
+    getPedals();
+  }, [])
+
 
   return (
     <main className="App">
@@ -25,7 +34,7 @@ export default function App() {
         :
         <AuthPage setUser={setUser} /> 
       }
-      <PedalList createPedal={createPedal}/>
+      <PedalList createPedal={createPedal} pedalsList={pedalsList} setPedalsList={setPedalsList}/>
     </main>
   );
 }

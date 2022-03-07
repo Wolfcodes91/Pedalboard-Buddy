@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react" 
+import { Route, Routes } from 'react-router-dom'
 import './App.css';
 import * as pedalsAPI from "../../utilities/pedals-api" 
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from '../../utilities/users-service'
-import PedalList from "../../components/PedalList/PedalList";
+import PedalListPage from "../PedalListPage/PedalListPage";
+import BoardPage from "../BoardPage/BoardPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser())
@@ -36,17 +38,25 @@ export default function App() {
       { user ? 
       <>
         <NavBar user={user} setUser={setUser}/>
-      </>
-        :
-        <AuthPage setUser={setUser} /> 
-      }
-      <PedalList 
+      <Routes>
+        <Route path="/board" element={<BoardPage  
         createPedal={createPedal} 
         pedalsList={pedalsList} 
         setPedalsList={setPedalsList}
         handleSelectPedal={handleSelectPedal}
-        activePedal={activePedal}
-        />
+        activePedal={activePedal}/>} />
+        <Route path="/pedals" element={<PedalListPage  
+        createPedal={createPedal} 
+        pedalsList={pedalsList} 
+        setPedalsList={setPedalsList}
+        handleSelectPedal={handleSelectPedal}
+        activePedal={activePedal}/>} />
+      </Routes>
+      </>
+        :
+        <AuthPage setUser={setUser} /> 
+      }
+      
     </main>
   );
 }

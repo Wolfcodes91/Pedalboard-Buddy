@@ -3,7 +3,9 @@ const Pedal = require("../../models/pedal")
 module.exports = {
   index,
   create,
-  show
+  show,
+  delete: deletePedal, 
+  update, 
 };
 
 async function index(req, res) {
@@ -24,4 +26,25 @@ async function create(req, res) {
 async function show(req, res) {
   const pedal = await Pedal.findById(req.params.id);
   res.json(pedal);
+}
+
+async function deletePedal(req, res) {
+    console.log(req.body.id, '4')
+    const pedaldlt = await Pedal.findByIdAndDelete(req.body.id)
+    res.json(pedaldlt)
+    console.log(pedaldlt) 
+}
+
+async function update(req, res) {
+    const updatedPedal = req.body.updatedName
+    const id = req.body.id
+    try {
+        await Pedal.findById(id, (error, pedalToUpdate) => {
+            pedalToUpdate.name = updatedPedal
+            pedalToUpdate.save()
+        })
+    } catch(err) {
+        console.log(err)
+    }
+    res.json(updatedPedal)
 }

@@ -6,17 +6,19 @@ export default function NewPedalForm({ createPedal }) {
     const [formData, setFormData] = useState({
         brand: "",
         name: "",
-        size: "",
+        size: "regular",
     })
     
     function handleAddNewPedal(evt) {
       evt.preventDefault()
+      console.log(formData)
       createPedal(formData)
       setFormData({ brand: "", name: "", size: "regular" });
       
       }
 
       function handleChange(evt) {
+          console.log(evt.target.name)
         setFormData({ ...formData,[evt.target.name]: evt.target.value});
       }
 
@@ -28,7 +30,7 @@ export default function NewPedalForm({ createPedal }) {
             <br />
             <input name="name" type="text" placeholder="Name" value={formData.name} onChange={handleChange}/>
             <br />
-            <select name="size" value={formData.size} onChange={handleChange}>
+            <select name="size" value={formData.size} onChange={(evt)=>handleChange(evt)}>
                 <option value="mini">Mini</option>
                 <option value="regular">Regular</option>
                 <option value="doublewide">Double Wide</option>

@@ -23,3 +23,7 @@
     border-width: .4vmin;
     font-weight: bold;
   }
+
+.dltButton, .updateButton {
+    width: 8vmin;
+}

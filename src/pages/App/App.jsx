@@ -27,7 +27,7 @@ export default function App() {
   // Fetch existing uploaded photos after first render
   // Photos will be sorted in the controller with the most recent first
   useEffect(function() {
-    // photosAPI.getAll().then(photos => setPhotos(photos));
+    photosAPI.getAll().then(photos => setPhotos(photos));
   }, []);
 
 
@@ -64,9 +64,9 @@ export default function App() {
     async function handleUpload() {
       // Use FormData object to send the inputs in the fetch request
       // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#uploading_a_file
-      const formData = new FormData();
-      formData.append('photo', fileInputRef.current.files[0]);
-      const newPhoto = await photosAPI.upload(formData);
+      const photoFormData = new FormData();
+      photoFormData.append('photo', fileInputRef.current.files[0]);
+      const newPhoto = await photosAPI.upload(photoFormData);
       setPhotos([newPhoto, ...photos]);
       // Clear the description and file inputs
       fileInputRef.current.value = '';

@@ -40,10 +40,8 @@ export default function Pedal({
         <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete Pedal</button>
     </ul>
     <section className="flex-ctr-ctr">
-        <input type="file" ref={fileInputRef} />
-        <button onClick={handleUpload}>Upload Photo</button>
-      </section>
-      <section>
+        <input className="chooseFileButton" type="file" ref={fileInputRef} />
+        <button className="uploadButton" onClick={handleUpload}>Upload Photo</button>
         {photos.map(p => <PhotoCard photo={p} key={p._id} />)}
       </section>
     </div>

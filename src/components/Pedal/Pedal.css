@@ -24,6 +24,16 @@
     font-weight: bold;
   }
 
-.dltButton, .updateButton {
+.dltButton, .updateButton, .uploadButton {
     width: 8vmin;
+}
+.chooseFileButton {
+    width: 13.5vmin;
+}
+
+.flex-ctr-ctr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

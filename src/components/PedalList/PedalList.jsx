@@ -4,7 +4,19 @@ import { useState } from "react"
 
 import "./PedalList.css"
 
-export default function PedalList({ createPedal, pedalsList, handleSelectPedal, activePedal, deletePedal, user, updatePedal }) {
+export default function PedalList({ 
+    createPedal, 
+    pedalsList, 
+    handleSelectPedal, 
+    activePedal, 
+    deletePedal, 
+    user, 
+    updatePedal,
+    handleUpload,
+    photos,
+    setPhotos,
+    }) 
+    {
     const [editData, setEditData] = useState({
         brand: "",
         name: "",
@@ -27,6 +39,9 @@ export default function PedalList({ createPedal, pedalsList, handleSelectPedal, 
           setPedalForm={setPedalForm}
           editData={editData}
           setEditData={setEditData}
+          handleUpload={handleUpload}
+          photos={photos}
+          setPhotos={setPhotos}
         />
     );
 
@@ -42,6 +57,7 @@ export default function PedalList({ createPedal, pedalsList, handleSelectPedal, 
         setPedalForm={setPedalForm}
         editData={editData}
         setEditData={setEditData}
+        updatePedal={updatePedal}
         />
         
         {pedals.length ?

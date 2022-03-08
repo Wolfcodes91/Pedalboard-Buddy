@@ -1,7 +1,17 @@
 import "./NewPedalForm.css"
 import { useState } from "react";
 
-export default function NewPedalForm({ createPedal, activePedal, pedalToUpdate, pedalForm, setPedalForm, editData, setEditData }) {
+export default function NewPedalForm({ 
+    createPedal,
+     activePedal, 
+     pedalToUpdate, 
+     pedalForm, 
+     setPedalForm, 
+     editData, 
+     setEditData,
+     updatePedal,
+     pedal
+    }) {
    
     const [formData, setFormData] = useState({
         brand: "",
@@ -15,9 +25,13 @@ export default function NewPedalForm({ createPedal, activePedal, pedalToUpdate, 
       setFormData({ brand: "", name: "", size: "regular" });
       }
 
-    function handleUpdatePedal() {
+      function handleUpdatePedal(evt) {
+        evt.preventDefault()
         setPedalForm(true)
+        updatePedal(editData)
+        console.log(editData, '2')
     }
+
 
       function handleChange(evt) {
         setFormData({ ...formData,[evt.target.name]: evt.target.value});
@@ -52,7 +66,7 @@ export default function NewPedalForm({ createPedal, activePedal, pedalToUpdate, 
         </form>
         </div>
         :
-        <div>
+        <div  className="newPedalForm">
         <h1>Edit a Pedal</h1>
         <form onSubmit={handleUpdatePedal}>
             <input 

@@ -34,12 +34,6 @@ async function deletePedal(req, res) {
 }
 
 async function update(req, res) {
-    console.log('updating')
-    const pedal = await Pedal.findByIdAndUpdate(req.body.id)
-    pedal.brand = req.body.id.brand
-    pedal.name = req.body.id.name
-    pedal.size = req.body.id.size
-    pedal.save()
-    console.log(pedal)
+    const pedal = await Pedal.findByIdAndUpdate(req.params.id, req.body.editData, {new: true})
     res.json(pedal)
 }

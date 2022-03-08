@@ -11,14 +11,12 @@ export default function NewPedalForm({ createPedal }) {
     
     function handleAddNewPedal(evt) {
       evt.preventDefault()
-      console.log(formData)
       createPedal(formData)
       setFormData({ brand: "", name: "", size: "regular" });
       
       }
 
       function handleChange(evt) {
-          console.log(evt.target.name)
         setFormData({ ...formData,[evt.target.name]: evt.target.value});
       }
 

@@ -1,6 +1,6 @@
 import PedalList from "../../components/PedalList/PedalList"
 
-export default function BoardPage({ createPedal, pedalsList, setPedalsList, handleSelectPedal, activePedal, deletePedal }) {
+export default function BoardPage({ createPedal, pedalsList, setPedalsList, handleSelectPedal, activePedal, deletePedal, updatePedal }) {
     return (
         <>
         <h1>board page</h1>
@@ -12,6 +12,7 @@ export default function BoardPage({ createPedal, pedalsList, setPedalsList, hand
         setPedalsList={setPedalsList}
         handleSelectPedal={handleSelectPedal}
         activePedal={activePedal}
+        updatePedal={updatePedal}
         />
         </>
     )

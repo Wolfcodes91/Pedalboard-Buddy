@@ -9,6 +9,7 @@ import PedalListPage from "../PedalListPage/PedalListPage";
 import BoardPage from "../BoardPage/BoardPage";
 
 
+
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [pedalsList, setPedalsList] = useState([])
@@ -27,17 +28,19 @@ export default function App() {
 
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
-    console.log(pedal)
     setPedalsList([...pedalsList, pedal])
   }
 
     async function deletePedal(id) {
-      console.log(id, 'STEP 3')
       const pedalToDelete = await pedalsAPI.deleteAPedal(id)
-      console.log(pedalToDelete._id, "this one")
       const upDatedPedalList = pedalsList.filter(pedal => pedalToDelete._id !== pedal._id)
-      console.log(upDatedPedalList)
       setPedalsList(upDatedPedalList)
+    }
+
+    async function updatePedal(pedal) {
+      const pedalToUpdate = await pedalsAPI.updateAPedal(pedal)
+      console.log(pedalToUpdate, '3')
+      
     }
 
 
@@ -60,6 +63,7 @@ export default function App() {
         pedalsList={pedalsList} 
         setPedalsList={setPedalsList}
         handleSelectPedal={handleSelectPedal}
+        updatePedal={updatePedal}
         activePedal={activePedal}/>} />
         <Route path="/pedals" element={<PedalListPage  
         deletePedal={deletePedal}
@@ -67,6 +71,7 @@ export default function App() {
         pedalsList={pedalsList} 
         setPedalsList={setPedalsList}
         handleSelectPedal={handleSelectPedal}
+        updatePedal={updatePedal}
         activePedal={activePedal}/>} />
       </Routes>
       </>

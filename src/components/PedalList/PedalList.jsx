@@ -3,7 +3,7 @@ import Pedal from "../Pedal/Pedal"
 
 import "./PedalList.css"
 
-export default function PedalList({ createPedal, pedalsList, handleSelectPedal, activePedal, deletePedal, user }) {
+export default function PedalList({ createPedal, pedalsList, handleSelectPedal, activePedal, deletePedal, user, updatePedal }) {
     const pedals = pedalsList.map(p =>
         <Pedal
           deletePedal={deletePedal}
@@ -12,6 +12,7 @@ export default function PedalList({ createPedal, pedalsList, handleSelectPedal, 
           key={p._id}
           isSelected={p === activePedal} 
           handleSelectPedal={handleSelectPedal}
+          updatePedal={updatePedal}
         />
     );
 

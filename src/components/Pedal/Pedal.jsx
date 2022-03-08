@@ -1,15 +1,16 @@
 import "./Pedal.css"
 
-export default function Pedal({ pedal, isSelected, handleSelectPedal, user, deletePedal }) {
+export default function Pedal({ pedal, isSelected, handleSelectPedal, user, deletePedal, updatePedal, showForm, setShowForm }) {
 
     function handleDeletePedal(id) {
         console.log(pedal, 'click')
         deletePedal(id)
     }
 
-    function handleUpdatePedal() {
-        console.log('click')
-        
+    function handleUpdatePedal(id) {
+        console.log(pedal, 'click')
+        setShowForm(showForm ? showForm !== showForm : showForm === showForm)
+        updatePedal(pedal)
     }
 
     return(

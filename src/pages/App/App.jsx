@@ -5,7 +5,6 @@ import * as pedalsAPI from "../../utilities/pedals-api"
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import { getUser } from '../../utilities/users-service'
-import PedalListPage from "../PedalListPage/PedalListPage";
 import BoardPage from "../BoardPage/BoardPage";
 
 
@@ -58,14 +57,6 @@ export default function App() {
         <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route path="/board" element={<BoardPage  
-        deletePedal={deletePedal}
-        createPedal={createPedal} 
-        pedalsList={pedalsList} 
-        setPedalsList={setPedalsList}
-        handleSelectPedal={handleSelectPedal}
-        updatePedal={updatePedal}
-        activePedal={activePedal}/>} />
-        <Route path="/pedals" element={<PedalListPage  
         deletePedal={deletePedal}
         createPedal={createPedal} 
         pedalsList={pedalsList} 

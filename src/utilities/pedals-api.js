@@ -16,7 +16,7 @@ export function getById(id) {
 export function deleteAPedal(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
 }
-export function updateAPedal(id) {
-  console.log(id, '2')
-  return sendRequest(`${BASE_URL}/${id}`, 'PUT', {id})
+export function updateAPedal(id, editData) {
+  console.log(editData, '2')
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', {id, editData})
 }

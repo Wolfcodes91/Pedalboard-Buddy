@@ -9,6 +9,7 @@ import BoardPage from "../BoardPage/BoardPage";
 
 
 
+
 export default function App() {
   const [user, setUser] = useState(getUser())
   const [pedalsList, setPedalsList] = useState([])
@@ -36,10 +37,10 @@ export default function App() {
       setPedalsList(upDatedPedalList)
     }
 
-    async function updatePedal(pedal) {
-      const pedalToUpdate = await pedalsAPI.updateAPedal(pedal)
-      console.log(pedalToUpdate, '3')
-      
+    async function updatePedal(editData) {
+      const pedalToUpdate = await pedalsAPI.updateAPedal(editData)
+      setActivePedal(pedalToUpdate)
+      console.log(editData, '3')
     }
 
 

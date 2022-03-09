@@ -3,16 +3,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--text-dark);
     border: .4vmin solid tan;
     border-radius: 1vmin;
     cursor: pointer;
     padding: 2vmin;
+    margin: 1vmin;
     width: 20vmin;
+    height: 20vmin;
     background-size: cover;
     background-position: center;
 }
-
 .pedal.selected {
     border-color: blue;
     border-width: .5vmin;
@@ -25,21 +25,31 @@
     border-width: .4vmin;
     font-weight: bold;
   }
-
+.pedal button:hover{
+  background-color: red;
+}
 .dltButton, .updateButton, .uploadButton {
     width: 8vmin;
+    padding: 0vmin;
+    font-size: 1vmin;
 }
 .chooseFileButton {
     width: 15vmin;
 }
 
-.flex-ctr-ctr {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 img {
   width: 100px;
+}
+.pedalInfoBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.pedalButtonBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 14vmin;
 }

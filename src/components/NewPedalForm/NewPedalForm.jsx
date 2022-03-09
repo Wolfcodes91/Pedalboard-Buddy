@@ -3,13 +3,12 @@ import { useState, useRef } from "react";
 
 export default function NewPedalForm({ 
     createPedal,
-     activePedal, 
      pedalToUpdate, 
      pedalForm, 
      setPedalForm, 
-     editData, 
-     setEditData,
      updatePedal,
+     editData,
+     setEditData,
     }) {
    
     const [formData, setFormData] = useState({
@@ -22,6 +21,7 @@ export default function NewPedalForm({
     // create a reference to the <input>, i.e.,
     // inputRef.current will be the <input> DOM element
     const fileInputRef = useRef();
+    const fileChangeRef = useRef()
     
     function handleAddNewPedal(evt) {
       evt.preventDefault()
@@ -36,11 +36,25 @@ export default function NewPedalForm({
       console.log('handleAdd')
       }
 
+    // function handleUpdatePedal(evt) {
+    //   evt.preventDefault()
+    //   const edit = new FormData();
+    //   edit.append('photo', fileChangeRef.current.files[0]);
+    //   edit.append('brand', editData.brand);
+    //   edit.append('name', editData.name);
+    //   edit.append('size', editData.size);
+    //   setPedalForm(true)
+    //   updatePedal(edit)
+    //   fileChangeRef.current.value = '';
+    //   console.log('handleUpdate', edit)
+    //   }
+    
+
     function handleUpdatePedal(evt) {
       evt.preventDefault()
       setPedalForm(true)
       updatePedal(editData)
-      console.log('handleUpdate')
+      console.log('handleUpdate', editData)
     }
 
     function handleChange(evt) {
@@ -96,7 +110,7 @@ export default function NewPedalForm({
                 <option value="doublewide">Double Wide</option>
                 <option value="wah/volume">Wah/Volume</option>
             </select>
-            <input className="chooseFileButton" name="photo"  type="file" />
+            <input className="chooseFileButton" name="photo" ref={fileChangeRef} type="file" />
             <button type="submit">Save Pedal Changes</button>
         </form>
         </div>

@@ -41,5 +41,6 @@ async function deletePedal(req, res) {
 
 async function update(req, res) {
     const pedal = await Pedal.findByIdAndUpdate(req.params.id, req.body.editData, {new: true})
+    console.log(pedal)
     res.json(pedal)
 }

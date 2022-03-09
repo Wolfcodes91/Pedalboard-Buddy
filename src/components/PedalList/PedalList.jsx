@@ -21,8 +21,8 @@ export default function PedalList({
         brand: "",
         name: "",
         size: "regular",
-        photo: ""
-    })
+    })  
+ 
     const [pedalToUpdate, setPedalToUpdate] = useState()
     const [pedalForm, setPedalForm] = useState(true)
     const pedals = pedalsList.map(p =>
@@ -38,11 +38,10 @@ export default function PedalList({
           setPedalToUpdate={setPedalToUpdate}
           pedalForm={pedalForm}
           setPedalForm={setPedalForm}
-          editData={editData}
-          setEditData={setEditData}
           handleUpload={handleUpload}
           photos={photos}
           setPhotos={setPhotos}
+          setEditData={setEditData}
         />
     );
 
@@ -56,10 +55,10 @@ export default function PedalList({
         setPedalToUpdate={setPedalToUpdate}
         pedalForm={pedalForm}
         setPedalForm={setPedalForm}
-        editData={editData}
-        setEditData={setEditData}
         updatePedal={updatePedal}
         handleUpload={handleUpload}
+        setEditData={setEditData}
+        editData={editData}
         />
         
         {pedals.length ?

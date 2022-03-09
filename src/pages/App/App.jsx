@@ -36,6 +36,7 @@ export default function App() {
   }
 
   async function updatePedal(editData) {
+    console.log('2', editData)
     const pedalToUpdate = await pedalsAPI.updateAPedal(editData)
     const updatedPedal = pedalsList.map(p => p._id === pedalToUpdate._id ? pedalToUpdate : p)
     setUpdatedPedal(pedalToUpdate)

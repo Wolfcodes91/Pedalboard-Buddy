@@ -5,15 +5,10 @@ export default function Pedal({
     isSelected, 
     handleSelectPedal, 
     deletePedal, 
-    updatePedal, 
     activePedal, 
     setPedalToUpdate, 
     setPedalForm, 
-    editData, 
     setEditData,
-    photos,
-    fileInputRef,
-    handleUpload,
     }) 
     {
 
@@ -30,10 +25,14 @@ export default function Pedal({
 
     return(
         <div style={{ backgroundImage: `url(${pedal.photo})` }} className={`pedal${isSelected ? ' selected' : ''}`} onClick={() => handleSelectPedal(pedal)}>
+            <div className="pedalInfoBox">
             <p>{pedal.brand}</p>
             <p>{pedal.name}</p>
+            </div>
+            <div className="pedalButtonBox">
             <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
             <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete</button>
+            </div>
         </div>
     );
 }

@@ -1,4 +1,6 @@
+import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
+import Board from "../../components/Board/Board"
 
 export default function BoardPage({ 
     createPedal, 
@@ -13,9 +15,10 @@ export default function BoardPage({
     }) 
     {
     return (
-        <>
+        <div className="boardPage">
         <h1>board page</h1>
-
+        
+        <Board />
         <PedalList 
         deletePedal={deletePedal}
         createPedal={createPedal} 
@@ -27,6 +30,6 @@ export default function BoardPage({
         photos={photos}
         setPhotos={setPhotos}
         />
-        </>
+        </div>
     )
 }

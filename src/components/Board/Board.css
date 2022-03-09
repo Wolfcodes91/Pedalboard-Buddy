@@ -1,0 +1,78 @@
+.board {
+    background-color: bisque;
+    border: solid 1vmin black;
+    color: red;
+    display: grid;
+    grid-template-columns: 4;
+    grid-template-rows: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.boardItem1 {
+    border: solid 0.5vmin grey;
+    background-color: pink;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.boardItem2 {
+    border: solid 0.5vmin grey;
+    background-color: red;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.boardItem3 {
+    border: solid 0.5vmin grey;
+    background-color: orange;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.boardItem4 {
+    border: solid 0.5vmin grey;
+    background-color: yellow;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+.boardItem5 {
+    border: solid 0.5vmin grey;
+    background-color: green;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.boardItem6 {
+    border: solid 0.5vmin grey;
+    background-color: blue;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+.boardItem7 {
+    border: solid 0.5vmin grey;
+    background-color: indigo;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.boardItem8 {
+    border: solid 0.5vmin grey;
+    background-color: white;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+

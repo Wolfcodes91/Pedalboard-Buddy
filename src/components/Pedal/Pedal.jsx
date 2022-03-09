@@ -29,21 +29,12 @@ export default function Pedal({
         setEditData(pedal)
     }
 
-
-
     return(
-    <div className={`pedal${isSelected ? ' selected' : ''}`} onClick={() => handleSelectPedal(pedal)}>
-    <ul>
-        <p>{pedal.brand}</p>
-        <p>{pedal.name}</p>
-        <button className="updateButton" onClick={handleUpdatePedalForm}>Edit Pedal</button>
-        <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete Pedal</button>
-    </ul>
-    <section className="flex-ctr-ctr">
-        <input className="chooseFileButton" type="file" ref={fileInputRef} />
-        <button className="uploadButton" onClick={handleUpload}>Upload Photo</button>
-        {photos.map(p => <PhotoCard photo={p} key={p._id} />)}
-      </section>
-    </div>
-    )
+        <div style={{ backgroundImage: `url(${pedal.photo})` }} className={`pedal${isSelected ? ' selected' : ''}`} onClick={() => handleSelectPedal(pedal)}>
+            <p>{pedal.brand}</p>
+            <p>{pedal.name}</p>
+            <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
+            <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete</button>
+        </div>
+    );
 }

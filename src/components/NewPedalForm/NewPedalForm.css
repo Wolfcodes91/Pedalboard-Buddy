@@ -17,3 +17,10 @@
 .newPedalForm input, button {
     width: 20vmin;
 }
+
+.flex-ctr-ctr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

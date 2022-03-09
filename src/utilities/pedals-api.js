@@ -6,7 +6,7 @@ export function getAll() {
   return sendRequest(BASE_URL);
 }
 export function newPedalCreate(formData) {
-  return sendRequest(`${BASE_URL}`, 'POST', formData);
+  return sendRequest(`${BASE_URL}`, 'POST', formData, true);
 }
 
 export function getById(id) {

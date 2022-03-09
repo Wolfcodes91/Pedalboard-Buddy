@@ -9,6 +9,8 @@
     cursor: pointer;
     padding: 2vmin;
     width: 20vmin;
+    background-size: cover;
+    background-position: center;
 }
 
 .pedal.selected {
@@ -28,7 +30,7 @@
     width: 8vmin;
 }
 .chooseFileButton {
-    width: 13.5vmin;
+    width: 15vmin;
 }
 
 .flex-ctr-ctr {
@@ -36,4 +38,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+img {
+  width: 100px;
 }

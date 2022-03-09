@@ -8,7 +8,6 @@ export default function BoardPage({
     activePedal, 
     deletePedal, 
     updatePedal, 
-    handleUpload,
     photos,
     setPhotos,
     }) 
@@ -25,7 +24,6 @@ export default function BoardPage({
         handleSelectPedal={handleSelectPedal}
         activePedal={activePedal}
         updatePedal={updatePedal}
-        handleUpload={handleUpload}
         photos={photos}
         setPhotos={setPhotos}
         />

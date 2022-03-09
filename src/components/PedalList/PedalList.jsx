@@ -21,6 +21,7 @@ export default function PedalList({
         brand: "",
         name: "",
         size: "regular",
+        photo: ""
     })
     const [pedalToUpdate, setPedalToUpdate] = useState()
     const [pedalForm, setPedalForm] = useState(true)
@@ -58,6 +59,7 @@ export default function PedalList({
         editData={editData}
         setEditData={setEditData}
         updatePedal={updatePedal}
+        handleUpload={handleUpload}
         />
         
         {pedals.length ?

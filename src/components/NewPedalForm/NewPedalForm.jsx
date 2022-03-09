@@ -1,5 +1,5 @@
 import "./NewPedalForm.css"
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function NewPedalForm({ 
     createPedal,
@@ -10,7 +10,6 @@ export default function NewPedalForm({
      editData, 
      setEditData,
      updatePedal,
-     pedal
     }) {
    
     const [formData, setFormData] = useState({
@@ -18,27 +17,38 @@ export default function NewPedalForm({
         name: "",
         size: "regular",
     })
+
+    // Use a ref prop on the <input> in the JSX to
+    // create a reference to the <input>, i.e.,
+    // inputRef.current will be the <input> DOM element
+    const fileInputRef = useRef();
     
     function handleAddNewPedal(evt) {
       evt.preventDefault()
-      createPedal(formData)
-      setFormData({ brand: "", name: "", size: "regular" });
+      const form = new FormData();
+      form.append('photo', fileInputRef.current.files[0]);
+      form.append('brand', formData.brand);
+      form.append('name', formData.name);
+      form.append('size', formData.size);
+      createPedal(form)
+      setFormData({ brand: "", name: "", size: "regular"});
+      fileInputRef.current.value = '';
+      console.log('handleAdd')
       }
 
-      function handleUpdatePedal(evt) {
-        evt.preventDefault()
-        setPedalForm(true)
-        updatePedal(editData)
-        console.log(editData, '2')
+    function handleUpdatePedal(evt) {
+      evt.preventDefault()
+      setPedalForm(true)
+      updatePedal(editData)
+      console.log('handleUpdate')
     }
 
-
-      function handleChange(evt) {
-        setFormData({ ...formData,[evt.target.name]: evt.target.value});
-      }
-      function handleEdit(evt) {
-        setEditData({ ...editData,[evt.target.name]: evt.target.value});
-      }
+    function handleChange(evt) {
+      setFormData({ ...formData,[evt.target.name]: evt.target.value});
+    }
+    function handleEdit(evt) {
+      setEditData({ ...editData,[evt.target.name]: evt.target.value});
+    }
 
     return (
         <>
@@ -62,6 +72,7 @@ export default function NewPedalForm({
                 <option value="doublewide">Double Wide</option>
                 <option value="wah/volume">Wah/Volume</option>
             </select>
+            <input className="chooseFileButton" type="file" ref={fileInputRef} />
             <button type="submit">Add New Pedal</button>
         </form>
         </div>
@@ -85,11 +96,11 @@ export default function NewPedalForm({
                 <option value="doublewide">Double Wide</option>
                 <option value="wah/volume">Wah/Volume</option>
             </select>
+            <input className="chooseFileButton" name="photo" type="file" />
             <button type="submit">Save Pedal Changes</button>
         </form>
-
         </div>
-    }
+      }
     </>
     )
 }

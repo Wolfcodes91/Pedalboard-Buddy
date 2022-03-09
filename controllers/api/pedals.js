@@ -1,4 +1,4 @@
-const pedal = require("../../models/pedal");
+const uploadFile = require('../../config/upload-file');
 const Pedal = require("../../models/pedal")
 
 module.exports = {
@@ -16,8 +16,14 @@ async function index(req, res) {
 
 async function create(req, res) {
     try {
-        const pedal = await Pedal.create(req.body)
-        res.json(pedal)
+      if (req.file) {
+        // TODO: Remove the console.log after you've verified the output
+        console.log(req.file, "SERVER FUNCTION");
+        // The uploadFile function will return the uploaded file's S3 endpoint
+        req.body.photo = await uploadFile(req.file);
+      }
+      const pedal = await Pedal.create(req.body)
+      res.json(pedal)
     } catch (err) {
         res.status(400).json(err);
     }

@@ -18,7 +18,7 @@ async function create(req, res) {
     try {
       if (req.file) {
         // TODO: Remove the console.log after you've verified the output
-        console.log(req.file, "SERVER FUNCTION");
+        console.log("SERVER FUNCTION");
         // The uploadFile function will return the uploaded file's S3 endpoint
         req.body.photo = await uploadFile(req.file);
       }

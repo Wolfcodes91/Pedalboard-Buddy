@@ -1,5 +1,4 @@
 import "./Pedal.css"
-import PhotoCard from "../PhotoCard/PhotoCard"
 
 export default function Pedal({ 
     pedal, 

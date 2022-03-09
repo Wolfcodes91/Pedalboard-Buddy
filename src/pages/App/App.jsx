@@ -1,9 +1,8 @@
 import './App.css';
-import { useState, useEffect, useRef } from "react" 
+import { useState, useEffect } from "react" 
 import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import * as pedalsAPI from "../../utilities/pedals-api" 
-import * as photosAPI from '../../utilities/photos-api';
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import BoardPage from "../BoardPage/BoardPage";
@@ -14,14 +13,6 @@ export default function App() {
   const [activePedal, setActivePedal] = useState(null);
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
-
-
-
-  // Fetch existing uploaded photos after first render
-  // Photos will be sorted in the controller with the most recent first
-  useEffect(function() {
-    photosAPI.getAll().then(photos => setPhotos(photos));
-  }, []);
 
   useEffect(function(){
     async function getPedals() {

@@ -4,7 +4,6 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd"
 export default function Board({handleOnDragEnd, boardSpot, setBoardSpot}) {
     return (
     <div className="board">
-    <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="dropPedals">
         {(provided) => (
         boardSpot.map((b, index) =>(
@@ -15,7 +14,6 @@ export default function Board({handleOnDragEnd, boardSpot, setBoardSpot}) {
         ))
         )}
         </Droppable>
-    </DragDropContext>
     </div>
    )
 }

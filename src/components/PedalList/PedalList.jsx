@@ -25,14 +25,7 @@ export default function PedalList({
     })  
     const [pedalToUpdate, setPedalToUpdate] = useState()
     const [pedalForm, setPedalForm] = useState(true) 
-    function handleOnDragEnd(result) {
-      if (!result.destination) return;
-      const items = Array.from(pedalsList);
-      const [reorderedItem] = items.splice(result.source.index, 1);
-      items.splice(result.destination.index, 0, reorderedItem )
-      setPedalsList(items)
-      console.log(result, items, reorderedItem)
-    } 
+    
 
     return (
         <div className="pedalList">
@@ -49,10 +42,8 @@ export default function PedalList({
         setEditData={setEditData}
         editData={editData}
         />
-        <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="pedalsList">
           {(provided) => (
-
           <div className="characters" {...provided.droppableProps} ref={provided.innerRef}>
           {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
           {pedalsList.map((pedal, index) => {
@@ -86,13 +77,8 @@ export default function PedalList({
           })}
           {provided.placeholder}
         </div>
-
-
-        
-
           )}
           </Droppable>
-        </DragDropContext>
         </div>
     )
 }

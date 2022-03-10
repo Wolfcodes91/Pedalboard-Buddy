@@ -44,8 +44,6 @@ export default function App() {
     setPedalsList(updatedPedal)
   }
 
-
-
   function handleSelectPedal(pedal) {
     setActivePedal(pedal);
   }

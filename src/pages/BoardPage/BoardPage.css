@@ -1,8 +1,15 @@
 .boardPage {
-    background-color: aqua;
+    background-color: grey;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 3fr 2fr;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+.saveBoardBtn {
+    height: 3vmin;
+}
+
+.saveBoardBtn:hover {
+    background-color: gold;
 }

@@ -2,7 +2,7 @@ import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
 import Board from "../../components/Board/Board"
 
-export default function BoardPage({ 
+export default function BoardPage({
     createPedal, 
     pedalsList, 
     setPedalsList, 
@@ -12,13 +12,19 @@ export default function BoardPage({
     updatePedal, 
     photos,
     setPhotos,
-    }) 
-    {
+    handleOnDragEnd,
+    boardSpot,
+    setBoardSpot,
+    })
+    {   
     return (
         <div className="boardPage">
-        <h1>board page</h1>
-        
-        <Board />
+        <button className="saveBoardBtn">Save Board</button>
+        <Board 
+        handleOnDragEnd={handleOnDragEnd}
+        boardSpot={boardSpot}
+        setBoardSpot={setBoardSpot}
+        />
         <PedalList 
         deletePedal={deletePedal}
         createPedal={createPedal} 
@@ -31,5 +37,5 @@ export default function BoardPage({
         setPhotos={setPhotos}
         />
         </div>
-    )
+     )
 }

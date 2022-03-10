@@ -1,7 +1,7 @@
 import NewPedalForm from "../NewPedalForm/NewPedalForm"
 import Pedal from "../Pedal/Pedal"
 import { useState } from "react"
-
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 import "./PedalList.css"
 
 export default function PedalList({ 
@@ -15,6 +15,7 @@ export default function PedalList({
     handleUpload,
     photos,
     setPhotos,
+    setPedalsList,
     }) 
     {
     const [editData, setEditData] = useState({
@@ -22,10 +23,17 @@ export default function PedalList({
         name: "",
         size: "regular",
     })  
- 
     const [pedalToUpdate, setPedalToUpdate] = useState()
-    const [pedalForm, setPedalForm] = useState(true)
-    const pedals = pedalsList.map(p =>
+    const [pedalForm, setPedalForm] = useState(true) 
+    function handleOnDragEnd(result) {
+      if (!result.destination) return;
+      const items = Array.from(pedalsList);
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, reorderedItem )
+      setPedalsList(items)
+      console.log(result, items, reorderedItem)
+    } 
+    const pedals = pedalsList.map((p, index) =>
         <Pedal
           deletePedal={deletePedal}
           user={user}
@@ -42,6 +50,8 @@ export default function PedalList({
           photos={photos}
           setPhotos={setPhotos}
           setEditData={setEditData}
+          index={index}
+          id = {p._id}
         />
     );
 
@@ -60,12 +70,20 @@ export default function PedalList({
         setEditData={setEditData}
         editData={editData}
         />
-        
-        {pedals.length ?
-        pedals
-        :
-        <span className="no-pedals">No Pedals</span>
-      }
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="dropPedals">
+          {(provided) => (
+          <div {...provided.droppableProps} ref={provided.innerRef}>
+          {pedals.length ?
+          pedals
+          :
+          <span className="no-pedals">No Pedals</span>
+        }
+            {provided.placeholder}
+          </div>
+          )}
+          </Droppable>
+        </DragDropContext>
         </div>
     )
 }

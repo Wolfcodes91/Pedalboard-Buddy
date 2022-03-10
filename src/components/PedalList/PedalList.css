@@ -1,5 +1,5 @@
 .pedalList {
-    background-color: yellow;
+    background-color: beige;
     display: flex;
     flex-direction: column;  
     justify-content: center;
@@ -9,6 +9,6 @@
     grid-column-start: 5;
     grid-row-start: 1;
     grid-row-end: 4;
-    width: 30vmin;
+    width: 26vmin;
     font-size: 1vmin;
 }

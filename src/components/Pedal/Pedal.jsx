@@ -1,4 +1,5 @@
 import "./Pedal.css"
+import { Draggable } from "react-beautiful-dnd"
 
 export default function Pedal({ 
     pedal, 
@@ -9,6 +10,8 @@ export default function Pedal({
     setPedalToUpdate, 
     setPedalForm, 
     setEditData,
+    index,
+    id,
     }) 
     {
 
@@ -24,7 +27,16 @@ export default function Pedal({
     }
 
     return(
-        <div style={{ backgroundImage: `url(${pedal.photo})` }} className={`pedal${isSelected ? ' selected' : ''}`} onClick={() => handleSelectPedal(pedal)}>
+        <Draggable key={id} draggableId={id} index={index}>
+        {(provided) => (
+        <div
+        {...provided.draggableProps} 
+        {...provided.dragHandleProps}
+        ref={provided.innerRef}
+        style={{ backgroundImage: `url(${pedal.photo})` }} 
+        className={`pedal${isSelected ? ' selected' : ''}`} 
+        // onClick={() => handleSelectPedal(pedal)}
+        >
             <div className="pedalInfoBox">
             <p>{pedal.brand}</p>
             <p>{pedal.name}</p>
@@ -34,5 +46,7 @@ export default function Pedal({
             <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete</button>
             </div>
         </div>
+        )}
+        </Draggable>
     );
 }

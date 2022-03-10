@@ -13,6 +13,7 @@ export default function App() {
   const [activePedal, setActivePedal] = useState(null);
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
+  const [boardSpot, setBoardSpot] = useState(['','','','','','','',''])
 
   useEffect(function(){
     async function getPedals() {
@@ -67,6 +68,8 @@ export default function App() {
         activePedal={activePedal}
         photos={photos}
         setPhotos={setPhotos}
+        boardSpot={boardSpot}
+        setBoardSpot={setBoardSpot}
         />} 
         />
       </Routes>

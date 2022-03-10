@@ -1,16 +1,21 @@
 import "./Board.css"
+import { DragDropContext, Droppable } from "react-beautiful-dnd"
 
-export default function Board() {
-   return (
+export default function Board({handleOnDragEnd, boardSpot, setBoardSpot}) {
+    return (
     <div className="board">
-    <div className="boardItem1"></div>
-    <div className="boardItem2"></div>
-    <div className="boardItem3"></div>
-    <div className="boardItem4"></div>
-    <div className="boardItem5"></div>
-    <div className="boardItem6"></div>
-    <div className="boardItem7"></div>
-    <div className="boardItem8"></div>
-   </div>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="dropPedals">
+        {(provided) => (
+        boardSpot.map((b, index) =>(
+        <div className={`boardItem${index}`} 
+        {...provided.droppableProps} ref={provided.innerRef}>
+        {provided.placeholder}   
+        </div>
+        ))
+        )}
+        </Droppable>
+    </DragDropContext>
+    </div>
    )
 }

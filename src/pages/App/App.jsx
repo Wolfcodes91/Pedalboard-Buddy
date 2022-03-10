@@ -55,7 +55,7 @@ export default function App() {
         <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route 
-        path="/board" 
+        path="/" 
         element={<BoardPage  
         deletePedal={deletePedal}
         createPedal={createPedal} 

@@ -8,7 +8,7 @@ export default function Board({handleOnDragEnd, boardSpot, setBoardSpot}) {
         <Droppable droppableId="dropPedals">
         {(provided) => (
         boardSpot.map((b, index) =>(
-        <div className={`boardItem${index}`} 
+        <div key={index} className={`boardItem${index}`} 
         {...provided.droppableProps} ref={provided.innerRef}>
         {provided.placeholder}   
         </div>

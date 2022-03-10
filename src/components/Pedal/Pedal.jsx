@@ -35,7 +35,7 @@ export default function Pedal({
         ref={provided.innerRef}
         style={{ backgroundImage: `url(${pedal.photo})` }} 
         className={`pedal${isSelected ? ' selected' : ''}`} 
-        // onClick={() => handleSelectPedal(pedal)}
+        onClick={() => handleSelectPedal(pedal)}
         >
             <div className="pedalInfoBox">
             <p>{pedal.brand}</p>

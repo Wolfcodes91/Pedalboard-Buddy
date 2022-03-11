@@ -39,8 +39,8 @@ export default function Board({
                             value={index}
                             {...provided.droppableProps} ref={provided.innerRef}
                             className={`boardItem${index} ${boardSpot[index] === activeDiv ? ' selected' : ''}`}
-                            onMouseEnter={() => handleSelectDiv(b, index)}
-                        >
+                            onClick={() => handleSelectDiv(b, index)}
+                        >   
                             {provided.placeholder}
                         </div>
                     )}

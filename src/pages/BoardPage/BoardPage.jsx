@@ -20,19 +20,18 @@ export default function BoardPage({
     activeDiv,
     setActiveDiv
 }) {
-    function handleOnDragEnd(result, boardSpot) {
+    function handleOnDragEnd(result) {
         if (!result.destination) return;
         const { source, destination } = result
 
         if (source.droppableId !== destination.droppableId) {
-            const destBoard = destination.droppableId
-            const sourceItems = Array.from(pedalsList);
-            const destItems = Array.from(boardSpot)
-            const [removed] = sourceItems.splice(source.index, 1)
-            destItems.splice(result.destination.index, 0, [removed])
-            setBoardSpot([...destBoard, destItems])
-            setPedalsList(sourceItems)
-            console.log([removed], destBoard, sourceItems, destItems)
+            const destBoard = parseInt(destination.droppableId)
+            if(boardSpot[destBoard].length) return 
+            const removed = pedalsList.splice(source.index, 1)
+            boardSpot.splice(destBoard, 1, removed)
+            setBoardSpot(boardSpot)
+            setPedalsList(pedalsList)
+            console.log(removed, destBoard, pedalsList, boardSpot)
         } else {
             const items = Array.from(pedalsList);
             const [reorderedItem] = items.splice(result.source.index, 1);

@@ -46,17 +46,17 @@ export default function PedalList({
           {(provided) => (
           <div className="characters" {...provided.droppableProps} ref={provided.innerRef}>
           {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
-          {pedalsList.map((pedal, index) => {
+          {pedalsList.map((p, index) => {
             return (
-              <Draggable key={pedal._id} draggableId={pedal._id} index={index}>
+              <Draggable key={p._id} draggableId={p._id} index={index}>
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                     <Pedal 
                      deletePedal={deletePedal}
                      user={user}
-                     pedal={pedal}
-                     key={pedal._id}
-                     isSelected={pedal === activePedal} 
+                     p={p}
+                     key={p._id}
+                     isSelected={p === activePedal} 
                      handleSelectPedal={handleSelectPedal}
                      updatePedal={updatePedal}
                      pedalToUpdate={pedalToUpdate}
@@ -68,7 +68,7 @@ export default function PedalList({
                      setPhotos={setPhotos}
                      setEditData={setEditData}
                      index={index}
-                     id = {pedal._id}
+                     id = {p._id}
                     />
                   </div>
                 )}

@@ -2,7 +2,7 @@ import "./Pedal.css"
 import { Draggable } from "react-beautiful-dnd"
 
 export default function Pedal({ 
-    pedal, 
+    p, 
     isSelected, 
     handleSelectPedal, 
     deletePedal, 
@@ -21,30 +21,30 @@ export default function Pedal({
     }
 
     function handleUpdatePedalForm(id) {
-        console.log('click', pedal)
+        console.log('click', p)
         setPedalForm(false)
         setPedalToUpdate(activePedal)
-        setEditData(pedal)
+        setEditData(p)
     }
 
     return(
-        <Draggable key={id} draggableId={id} index={index} b={b}>
+        <Draggable key={id} draggableId={id} index={index}>
         {(provided) => (
         <div
         {...provided.draggableProps} 
         {...provided.dragHandleProps}
         ref={provided.innerRef}
-        style={{ backgroundImage: `url(${pedal.photo})` }} 
+        style={{ backgroundImage: `url(${p.photo})` }} 
         className={`pedal${isSelected ? ' selected' : ''}`} 
-        onClick={() => handleSelectPedal(pedal)}
+        onClick={() => handleSelectPedal(p)}
         >
             <div className="pedalInfoBox">
-            <p>{pedal.brand}</p>
-            <p>{pedal.name}</p>
+            <p>{p.brand}</p>
+            <p>{p.name}</p>
             </div>
             <div className="pedalButtonBox">
             <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
-            <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete</button>
+            <button className="dltButton" onClick={() => handleDeletePedal(p._id)}>Delete</button>
             </div>
         </div>
         )}

@@ -12,6 +12,7 @@ export default function Pedal({
     setEditData,
     index,
     id,
+    b,
     }) 
     {
 
@@ -27,7 +28,7 @@ export default function Pedal({
     }
 
     return(
-        <Draggable key={id} draggableId={id} index={index}>
+        <Draggable key={id} draggableId={id} index={index} b={b}>
         {(provided) => (
         <div
         {...provided.draggableProps} 

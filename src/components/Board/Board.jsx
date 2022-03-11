@@ -1,19 +1,52 @@
 import "./Board.css"
-import { DragDropContext, Droppable } from "react-beautiful-dnd"
+import { useState } from "react"
+import { Droppable, Draggable } from "react-beautiful-dnd"
+import Pedal from "../Pedal/Pedal"
 
-export default function Board({handleOnDragEnd, boardSpot, setBoardSpot}) {
+
+
+export default function Board({
+    handleOnDragEnd,
+    boardSpot,
+    setBoardSpot,
+    pedal,
+    deletePedal,
+    user,
+    activePedal,
+    handleSelectPedal,
+    updatePedal,
+    pedalToUpdate,
+    setPedalToUpdate,
+    pedalsList,
+    setPedalForm,
+    handleUpload,
+    photos,
+    setPhotos,
+    setEditData,
+    handleSelectDiv,
+    activeDiv,
+    setActiveDiv
+}) {
+
+
+
     return (
-    <div className="board">
-        <Droppable droppableId="dropPedals">
-        {(provided) => (
-        boardSpot.map((b, index) =>(
-        <div key={index} className={`boardItem${index}`} 
-        {...provided.droppableProps} ref={provided.innerRef}>
-        {provided.placeholder}   
+        <div className="board">
+            {boardSpot.map((b, index) => (
+                <Droppable droppableId={`boardSpot${index}`} key={index}>
+                    {(provided) => (
+                        <div
+                            value={index}
+                            {...provided.droppableProps} ref={provided.innerRef}
+                            className={`boardItem${index} ${boardSpot[index] === activeDiv ? ' selected' : ''}`}
+                            onMouseEnter={() => handleSelectDiv(b, index)}
+                        >
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            ))
+            }
         </div>
-        ))
-        )}
-        </Droppable>
-    </div>
-   )
+    )
 }

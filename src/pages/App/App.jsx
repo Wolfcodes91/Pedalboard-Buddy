@@ -11,15 +11,26 @@ export default function App() {
   const [user, setUser] = useState(getUser())
   const [pedalsList, setPedalsList] = useState([])
   const [activePedal, setActivePedal] = useState(null);
+  const [activeDiv, setActiveDiv] = useState(null)
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
-  const [boardSpot, setBoardSpot] = useState(['','','','','','','',''])
+  const [boardSpot, setBoardSpot] = useState([
+    {boardId: 0, pedalId: ''},
+    {boardId: 1, pedalId: ''},
+    {boardId: 2, pedalId: ''},
+    {boardId: 3, pedalId: ''},
+    {boardId: 4, pedalId: ''},
+    {boardId: 5, pedalId: ''},
+    {boardId: 6, pedalId: ''},
+    {boardId: 7, pedalId: ''},
+  ])
 
   useEffect(function(){
     async function getPedals() {
       const pedals = await pedalsAPI.getAll();
       setPedalsList(pedals) 
       setActivePedal(pedals[0] || null);
+      // setActiveDiv(boardSpot[0] || null);
     }
     getPedals();
   }, [])
@@ -47,6 +58,10 @@ export default function App() {
   function handleSelectPedal(pedal) {
     setActivePedal(pedal);
   }
+  function handleSelectDiv(b, index) {
+    setActiveDiv(b);
+  }
+
 
   return (
     <main className="App">
@@ -68,6 +83,9 @@ export default function App() {
         setPhotos={setPhotos}
         boardSpot={boardSpot}
         setBoardSpot={setBoardSpot}
+        handleSelectDiv={handleSelectDiv}
+        activeDiv={activeDiv}
+        setActiveDiv={setActiveDiv}
         />} 
         />
       </Routes>

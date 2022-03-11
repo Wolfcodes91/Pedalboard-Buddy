@@ -76,3 +76,26 @@
     grid-column-end: 5;
 }
 
+.boardItem0.selected, 
+.boardItem1.selected, 
+.boardItem2.selected, 
+.boardItem3.selected, 
+.boardItem4.selected, 
+.boardItem5.selected, 
+.boardItem6.selected, 
+.boardItem7.selected {
+    border-color: blue;
+    cursor: default;
+    font-weight: bold;
+  }
+.boardItem0:not(.selected):hover, 
+.boardItem1:not(.selected):hover, 
+.boardItem2:not(.selected):hover, 
+.boardItem3:not(.selected):hover, 
+.boardItem4:not(.selected):hover, 
+.boardItem5:not(.selected):hover, 
+.boardItem6:not(.selected):hover,  
+.boardItem7:not(.selected):hover {
+    border-color: blue;
+    font-weight: bold;
+  }

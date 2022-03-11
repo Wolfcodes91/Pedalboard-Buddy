@@ -1,5 +1,5 @@
 .board {
-    /* background-color: bisque; */
+    background-color: bisque;
     border: solid 1vmin black;
     color: red;
     display: grid;
@@ -13,7 +13,7 @@
 
 .boardItem0 {
     border: solid 0.5vmin grey;
-    /* background-color: black; */
+    background-color: black;
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;

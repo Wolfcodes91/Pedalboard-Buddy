@@ -2,6 +2,7 @@ import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
 import Board from "../../components/Board/Board"
 import { DragDropContext } from 'react-beautiful-dnd'
+import { useState } from "react"
 
 export default function BoardPage({
     createPedal,
@@ -13,13 +14,11 @@ export default function BoardPage({
     updatePedal,
     photos,
     setPhotos,
-    handleOnDragEnd,
     boardSpot,
     setBoardSpot,
     handleSelectDiv,
-    activeDiv,
-    setActiveDiv
 }) {
+    const [count, setCount] = useState(0)
     function handleOnDragEnd(result) {
         if (!result.destination) return;
         const { source, destination } = result
@@ -39,6 +38,7 @@ export default function BoardPage({
             setPedalsList(items)
             console.log(result, items, 'drag end')
         }
+        setCount(count + 1)
     }
     return (
         <div className="boardPage">
@@ -50,8 +50,6 @@ export default function BoardPage({
                     setBoardSpot={setBoardSpot}
                     pedalsList={pedalsList}
                     handleSelectDiv={handleSelectDiv}
-                    activeDiv={activeDiv}
-                    setActiveDiv={setActiveDiv}
                 />
                 <PedalList
                     deletePedal={deletePedal}

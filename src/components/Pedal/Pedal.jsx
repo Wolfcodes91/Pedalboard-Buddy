@@ -1,53 +1,53 @@
 import "./Pedal.css"
 import { Draggable } from "react-beautiful-dnd"
 
-export default function Pedal({ 
-    p, 
-    isSelected, 
-    handleSelectPedal, 
-    deletePedal, 
-    activePedal, 
-    setPedalToUpdate, 
-    setPedalForm, 
+export default function Pedal({
+    p,
+    isSelected,
+    handleSelectPedal,
+    deletePedal,
+    activePedal,
+    setPedalToUpdate,
+    setPedalForm,
     setEditData,
     index,
     id,
-    b,
-    }) 
-    {
+}) {
+    let pedal = p;
+    if (pedal.length) pedal = pedal[0]
 
     function handleDeletePedal(id) {
         deletePedal(id)
     }
 
     function handleUpdatePedalForm(id) {
-        console.log('click', p)
+        console.log('click', pedal)
         setPedalForm(false)
         setPedalToUpdate(activePedal)
-        setEditData(p)
+        setEditData(pedal)
     }
 
-    return(
+    return (
         <Draggable key={id} draggableId={id} index={index}>
-        {(provided) => (
-        <div
-        {...provided.draggableProps} 
-        {...provided.dragHandleProps}
-        ref={provided.innerRef}
-        style={{ backgroundImage: `url(${p.photo})` }} 
-        className={`pedal${isSelected ? ' selected' : ''}`} 
-        onClick={() => handleSelectPedal(p)}
-        >
-            <div className="pedalInfoBox">
-            <p>{p.brand}</p>
-            <p>{p.name}</p>
-            </div>
-            <div className="pedalButtonBox">
-            <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
-            <button className="dltButton" onClick={() => handleDeletePedal(p._id)}>Delete</button>
-            </div>
-        </div>
-        )}
+            {(provided) => (
+                <div
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                    style={{ backgroundImage: `url(${pedal.photo})` }}
+                    className={`pedal${isSelected ? ' selected' : ''}`}
+                    onClick={() => handleSelectPedal(pedal)}
+                >
+                    <div className="pedalInfoBox">
+                        <p>{pedal.brand}</p>
+                        <p>{pedal.name}</p>
+                    </div>
+                    <div className="pedalButtonBox">
+                        <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
+                        <button className="dltButton" onClick={() => handleDeletePedal(pedal._id)}>Delete</button>
+                    </div>
+                </div>
+            )}
         </Draggable>
     );
 }

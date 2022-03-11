@@ -1,5 +1,4 @@
 import "./Board.css"
-import { useState, useEffect } from "react"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import Pedal from "../Pedal/Pedal"
 
@@ -22,8 +21,6 @@ export default function Board({
     setPhotos,
     setEditData,
     handleSelectDiv,
-    activeDiv,
-    setActiveDiv,
     pedal,
     pedalForm,
     isSelected, 
@@ -44,9 +41,12 @@ export default function Board({
                         <div
                             value={index}
                             {...provided.droppableProps} ref={provided.innerRef}
-                            className={`boardItem${index} ${boardSpot[index] === activeDiv ? ' selected' : ''}`}
-                            onClick={() => handleSelectDiv(b, index)}>
+                            className={`boardItem${index}`}>
                             {boardSpot[index].length ?
+                            
+                            <Draggable key={b.index} draggableId={JSON.stringify(index)} index={index}>
+                            {(provided) => (
+                              <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                             <Pedal 
                             deletePedal={deletePedal}
                             user={user}
@@ -65,7 +65,9 @@ export default function Board({
                             index={index}
                             id = {b.boardId}
                             />
-            
+                            </div>
+                            )}
+                            </Draggable>
                                 :
                                 'no pedal'
                             }

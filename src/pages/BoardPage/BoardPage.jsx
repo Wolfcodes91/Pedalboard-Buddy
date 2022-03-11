@@ -29,17 +29,9 @@ export default function BoardPage({
             const sourceItems = Array.from(pedalsList);
             const destItems = Array.from(boardSpot)
             const [removed] = sourceItems.splice(source.index, 1)
-            console.log([removed], destBoard, sourceItems, destItems)
-            destItems.splice(destination.index, 0, removed)
-            setBoardSpot({
-                ...boardSpot,
-                [source.droppableId]: {
-                    ...sourceItems, sourceItems
-                },
-                [destination.droppableId]: {
-                    ...destBoard, destItems
-                }
-            })
+            destItems.splice(result.destination.index, 0, removed)
+            setBoardSpot(destItems)
+            console.log([removed], destBoard, sourceItems, destItems, boardSpot)
         } else {
             const items = Array.from(pedalsList);
             const [reorderedItem] = items.splice(result.source.index, 1);

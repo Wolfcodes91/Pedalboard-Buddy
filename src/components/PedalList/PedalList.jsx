@@ -4,36 +4,35 @@ import { useState } from "react"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import "./PedalList.css"
 
-export default function PedalList({ 
-    createPedal, 
-    pedalsList, 
-    handleSelectPedal, 
-    activePedal, 
-    deletePedal, 
-    user, 
-    updatePedal,
-    handleUpload,
-    photos,
-    setPhotos,
-    setPedalsList,
-    }) 
-    {
-    const [editData, setEditData] = useState({
-        brand: "",
-        name: "",
-        size: "regular",
-    })  
-    const [pedalToUpdate, setPedalToUpdate] = useState()
-    const [pedalForm, setPedalForm] = useState(true) 
-    
+export default function PedalList({
+  createPedal,
+  pedalsList,
+  handleSelectPedal,
+  activePedal,
+  deletePedal,
+  user,
+  updatePedal,
+  handleUpload,
+  photos,
+  setPhotos,
+  setPedalsList,
+}) {
+  const [editData, setEditData] = useState({
+    brand: "",
+    name: "",
+    size: "regular",
+  })
+  const [pedalToUpdate, setPedalToUpdate] = useState()
+  const [pedalForm, setPedalForm] = useState(true)
 
-    return (
-        <div className="pedalList">
-        <h1>Pedal List</h1>
-        <NewPedalForm 
-        createPedal={createPedal} 
-        activePedal={activePedal} 
-        pedalToUpdate={pedalToUpdate} 
+
+  return (
+    <div className="pedalList">
+      <h1>Pedal List</h1>
+      <NewPedalForm
+        createPedal={createPedal}
+        activePedal={activePedal}
+        pedalToUpdate={pedalToUpdate}
         setPedalToUpdate={setPedalToUpdate}
         pedalForm={pedalForm}
         setPedalForm={setPedalForm}
@@ -41,52 +40,51 @@ export default function PedalList({
         handleUpload={handleUpload}
         setEditData={setEditData}
         editData={editData}
-        />
-          <Droppable droppableId="pedalsList">
-          {(provided) => (
+      />
+      <Droppable droppableId="pedalsList">
+        {(provided) => (
           <div className="characters" {...provided.droppableProps} ref={provided.innerRef}>
-          {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
-          {pedalsList.map((p, index) => {
-            return (
-              <Draggable key={p._id} draggableId={p._id} index={index}>
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                    <Pedal 
-                     deletePedal={deletePedal}
-                     user={user}
-                     p={p}
-                     key={p._id}
-                     isSelected={p === activePedal} 
-                     handleSelectPedal={handleSelectPedal}
-                     updatePedal={updatePedal}
-                     pedalToUpdate={pedalToUpdate}
-                     setPedalToUpdate={setPedalToUpdate}
-                     pedalForm={pedalForm}
-                     setPedalForm={setPedalForm}
-                     handleUpload={handleUpload}
-                     photos={photos}
-                     setPhotos={setPhotos}
-                     setEditData={setEditData}
-                     index={index}
-                     id = {p._id}
-                     
-                    />
-                  </div>
-                )}
-              </Draggable>
-            );
-          })}
-          {provided.placeholder}
-        </div>
-          )}
-          </Droppable>
-        </div>
-    )
+            {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
+            {pedalsList.map((p, index) => {
+              return (
+                <Draggable key={p._id} draggableId={p._id} index={index}>
+                  {(provided) => (
+                    <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <Pedal
+                        deletePedal={deletePedal}
+                        user={user}
+                        p={p}
+                        key={p._id}
+                        isSelected={p === activePedal}
+                        handleSelectPedal={handleSelectPedal}
+                        updatePedal={updatePedal}
+                        pedalToUpdate={pedalToUpdate}
+                        setPedalToUpdate={setPedalToUpdate}
+                        pedalForm={pedalForm}
+                        setPedalForm={setPedalForm}
+                        handleUpload={handleUpload}
+                        photos={photos}
+                        setPhotos={setPhotos}
+                        setEditData={setEditData}
+                        index={index}
+                        id={p._id}
+
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              );
+            })}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </div>
+  )
 }
 
 
 
 
 // <div {...provided.droppableProps} ref={provided.innerRef}>
-       
-        
+

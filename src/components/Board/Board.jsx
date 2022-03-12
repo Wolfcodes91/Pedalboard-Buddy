@@ -42,7 +42,7 @@ export default function Board({
                             value={index}
                             {...provided.droppableProps} ref={provided.innerRef}
                             className={`boardItem${index}`}>
-                            {boardSpot[index].length ?
+                            {boardSpot[index].brand ?
                             
                             <Draggable key={b.index} draggableId={index.toString()} index={index}>
                             {(provided) => (

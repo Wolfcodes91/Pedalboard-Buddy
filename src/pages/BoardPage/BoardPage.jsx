@@ -24,13 +24,17 @@ export default function BoardPage({
         const { source, destination } = result
         
         function moveToBoard() {
-            let destBoard = result.destination.droppableId
-            if(boardSpot[destBoard].length) return 
-            const removed = pedalsList.splice(source.index, 1)
-            boardSpot.splice(destBoard, 1, removed)
-            setPedalsList(pedalsList)
-            setBoardSpot(boardSpot)
-            console.log(result.draggableId, boardSpot, 'boop')
+            let destBoard = parseInt(result.destination.droppableId)
+            if(boardSpot[destBoard].brand) return 
+            const removed = pedalsList[source.index]
+            const newPedalsList = [
+                ...pedalsList.filter((p, index)=> index!==source.index),
+            ]
+            setPedalsList(newPedalsList)
+            let newBoardSpot = [...boardSpot]
+            newBoardSpot[destBoard] = removed
+            setBoardSpot(newBoardSpot)
+            console.log(result.draggableId, newBoardSpot, 'boop')
         }
         // function moveToList() {
         //     let destList = result.destination.droppableId

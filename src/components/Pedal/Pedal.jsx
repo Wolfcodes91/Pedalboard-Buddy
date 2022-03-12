@@ -28,12 +28,7 @@ export default function Pedal({
     }
 
     return (
-        <Draggable key={id} draggableId={id} index={index}>
-            {(provided) => (
                 <div
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    ref={provided.innerRef}
                     style={{ backgroundImage: `url(${p.photo})` }}
                     className={`pedal${isSelected ? ' selected' : ''}`}
                     onClick={() => handleSelectPedal(p)}
@@ -47,7 +42,5 @@ export default function Pedal({
                         <button className="dltButton" onClick={() => handleDeletePedal(p._id)}>Delete</button>
                     </div>
                 </div>
-            )}
-        </Draggable>
     );
 }

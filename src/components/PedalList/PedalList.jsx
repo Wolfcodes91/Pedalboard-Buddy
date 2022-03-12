@@ -1,7 +1,7 @@
 import NewPedalForm from "../NewPedalForm/NewPedalForm"
 import Pedal from "../Pedal/Pedal"
 import { useState } from "react"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import { Droppable, Draggable } from "react-beautiful-dnd"
 import "./PedalList.css"
 
 export default function PedalList({ 
@@ -69,6 +69,7 @@ export default function PedalList({
                      setEditData={setEditData}
                      index={index}
                      id = {p._id}
+                     
                     />
                   </div>
                 )}

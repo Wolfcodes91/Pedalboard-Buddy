@@ -29,6 +29,7 @@ export default function App() {
       const pedals = await pedalsAPI.getAll();
       setPedalsList(pedals) 
       setActivePedal(pedals[0] || null);
+      // setBoardSpot(boardSpot)
     }
     getPedals();
   }, [])

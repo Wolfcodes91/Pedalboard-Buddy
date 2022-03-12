@@ -44,7 +44,7 @@ export default function Board({
                             className={`boardItem${index}`}>
                             {boardSpot[index].length ?
                             
-                            <Draggable key={b.index} draggableId={JSON.stringify(index)} index={index}>
+                            <Draggable key={b.index} draggableId={index.toString()} index={index}>
                             {(provided) => (
                               <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                             <Pedal 
@@ -65,7 +65,7 @@ export default function Board({
                             index={index}
                             id = {b.boardId}
                             />
-                            </div>
+                             </div>
                             )}
                             </Draggable>
                                 :

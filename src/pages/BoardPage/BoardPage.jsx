@@ -22,21 +22,50 @@ export default function BoardPage({
     function handleOnDragEnd(result) {
         if (!result.destination) return;
         const { source, destination } = result
-
-        if (source.droppableId !== destination.droppableId) {
-            const destBoard = parseInt(destination.droppableId)
+        
+        function moveToBoard() {
+            let destBoard = result.destination.droppableId
             if(boardSpot[destBoard].length) return 
             const removed = pedalsList.splice(source.index, 1)
             boardSpot.splice(destBoard, 1, removed)
-            setBoardSpot(boardSpot)
             setPedalsList(pedalsList)
-            console.log(removed, destBoard, pedalsList, boardSpot)
-        } else {
-            const items = Array.from(pedalsList);
-            const [reorderedItem] = items.splice(result.source.index, 1);
-            items.splice(result.destination.index, 0, reorderedItem)
-            setPedalsList(items)
-            console.log(result, items, 'drag end')
+            setBoardSpot(boardSpot)
+            console.log(result.draggableId, boardSpot, 'boop')
+        }
+        // function moveToList() {
+        //     let destList = result.destination.droppableId
+        //     const removed = boardSpot.splice(source.index, 1)
+        //     boardSpot.splice(destBoard, 1, removed)
+        //     setPedalsList(pedalsList)
+        //     setBoardSpot(boardSpot)
+        //     console.log(result.draggableId, boardSpot, 'boop')
+        // }
+
+        function moveInList() {
+            const [reorderedItem] = pedalsList.splice(result.source.index, 1);
+            pedalsList.splice(result.destination.index, 0, reorderedItem)
+            setPedalsList(pedalsList)
+            console.log(result, 'bop') 
+        }
+        
+        function moveWithinBoard() {
+            console.log(result)
+            const [reorderedBoardItem] = boardSpot.splice(result.source.index, 1);
+            console.log(reorderedBoardItem)
+            boardSpot.splice(result.destination.index, 0, reorderedBoardItem)
+            // const newSpot = boardSpot.map((spot, index) => result.destination.index === index ? result : spot )
+            setBoardSpot(boardSpot)
+            console.log(result, boardSpot, 'beep')
+        }
+        
+        if (source.droppableId !== destination.droppableId && source.droppableId === 'pedalsList') {
+            moveToBoard(result, source, destination)
+           
+        } else if (source.droppableId !== destination.droppableId) {
+            moveWithinBoard()
+        }
+        else {
+            moveInList()
         }
         setCount(count + 1)
     }
@@ -45,7 +74,6 @@ export default function BoardPage({
             <button className="saveBoardBtn">Save Board</button>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board
-                    handleOnDragEnd={handleOnDragEnd}
                     boardSpot={boardSpot}
                     setBoardSpot={setBoardSpot}
                     pedalsList={pedalsList}

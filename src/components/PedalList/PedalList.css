@@ -5,10 +5,10 @@
     justify-content: center;
     align-items: center;
     border: solid 1px black;
-    border-radius: 1vmin;
+    border-radius: 10px;
     grid-column-start: 5;
     grid-row-start: 1;
     grid-row-end: 4;
-    width: 26vmin;
+    width: 300px;
     font-size: 1vmin;
 }

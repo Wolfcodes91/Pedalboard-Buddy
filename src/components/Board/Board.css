@@ -3,7 +3,7 @@
     height: 600px;
     width: 1200px;
     border: solid 10px black;
-    color: red;
+    color: transparent;
     display: grid;
     grid-template-columns: 4;
     grid-template-rows: 2;
@@ -11,6 +11,13 @@
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+.board button {
+    background-color: transparent;
+    border-color: transparent;
+}
+.board button:hover {
+    background-color: transparent;
 }
 
 .boardItem0 {

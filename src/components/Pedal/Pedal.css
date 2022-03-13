@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: .4vmin solid tan;
+    border: 4px solid tan;
     border-radius: 1vmin;
     cursor: pointer;
-    padding: 2vmin;
-    margin: 1vmin;
+    padding: 20px;
+    margin: 10px;
     width: 200px;
     height: 200px;
     background-size: cover;
@@ -15,26 +15,26 @@
 }
 .pedal.selected {
     border-color: blue;
-    border-width: .5vmin;
+    border-width: 5px;
     cursor: default;
     font-weight: bold;
   }
   
 .pedal:not(.selected):hover {
     border-color: blue;
-    border-width: .4vmin;
+    border-width: 5px;
     font-weight: bold;
   }
 .pedal button:hover{
   background-color: red;
 }
 .dltButton, .updateButton, .uploadButton {
-    width: 8vmin;
-    padding: 0vmin;
-    font-size: 1vmin;
+    width: 80px;
+    padding: 2px;
+    font-size: 10px;
 }
 .chooseFileButton {
-    width: 15vmin;
+    width: 150px;
 }
 
 img {
@@ -51,5 +51,5 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 14vmin;
+  margin-top: 110px;
 }

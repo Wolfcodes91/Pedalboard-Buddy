@@ -30,46 +30,54 @@ export default function BoardPage({
             const newPedalsList = [
                 ...pedalsList.filter((p, index)=> index!==source.index),
             ]
-            setPedalsList(newPedalsList)
             let newBoardSpot = [...boardSpot]
             newBoardSpot[destBoard] = removed
+            setPedalsList(newPedalsList)
             setBoardSpot(newBoardSpot)
             console.log(result.draggableId, newBoardSpot, 'boop')
         }
-        // function moveToList() {
-        //     let destList = result.destination.droppableId
-        //     const removed = boardSpot.splice(source.index, 1)
-        //     boardSpot.splice(destBoard, 1, removed)
-        //     setPedalsList(pedalsList)
-        //     setBoardSpot(boardSpot)
-        //     console.log(result.draggableId, boardSpot, 'boop')
-        // }
+        function moveToList() {
+            // let destList = result.destination.droppableId
+            const removed = boardSpot.splice(source.index, 1)
+            pedalsList.splice(pedalsList, 1, removed)
+            // setPedalsList(pedalsList)
+            // setBoardSpot(boardSpot)
+            console.log(result.draggableId, boardSpot, pedalsList, 'borp')
+        }
 
         function moveInList() {
             const [reorderedItem] = pedalsList.splice(result.source.index, 1);
             pedalsList.splice(result.destination.index, 0, reorderedItem)
             setPedalsList(pedalsList)
-            console.log(result, 'bop') 
+            console.log(pedalsList, 'bop') 
         }
         
         function moveWithinBoard() {
             console.log(result)
             const [reorderedBoardItem] = boardSpot.splice(result.source.index, 1);
+            // const reorderedBoardItem = [
+            // ...boardSpot.filter((b, index)=> index ===source.index)
+            // ]
             console.log(reorderedBoardItem)
-            boardSpot.splice(result.destination.index, 0, reorderedBoardItem)
+            let newBoardSpot = [...boardSpot]
+            // newBoardSpot[result.destination.index] = reorderedBoardItem
+            newBoardSpot.splice(result.destination.droppableId, 0, reorderedBoardItem)
             // const newSpot = boardSpot.map((spot, index) => result.destination.index === index ? result : spot )
-            setBoardSpot(boardSpot)
-            console.log(result, boardSpot, 'beep')
+            setBoardSpot(newBoardSpot)
+            console.log(result, newBoardSpot, 'beep')
         }
         
         if (source.droppableId !== destination.droppableId && source.droppableId === 'pedalsList') {
             moveToBoard(result, source, destination)
-           
-        } else if (source.droppableId !== destination.droppableId) {
+            }
+            else if (source.droppableId === destination.droppableId && source.droppableId === 'pedalsList'){
+                moveInList()
+            }
+            else if (source.droppableId !== destination.droppableId && destination.droppableId === 'pedalsList') {
+                moveToList()
+            }
+            else if (source.droppableId !== destination.droppableId) {
             moveWithinBoard()
-        }
-        else {
-            moveInList()
         }
         setCount(count + 1)
     }

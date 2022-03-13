@@ -8,8 +8,8 @@
     cursor: pointer;
     padding: 2vmin;
     margin: 1vmin;
-    width: 20vmin;
-    height: 20vmin;
+    width: 200px;
+    height: 200px;
     background-size: cover;
     background-position: center;
 }

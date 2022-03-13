@@ -43,7 +43,7 @@ export default function PedalList({
       />
       <Droppable droppableId="pedalsList">
         {(provided) => (
-          <div className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+          <div className="pedalListItems" {...provided.droppableProps} ref={provided.innerRef}>
             {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
             {pedalsList.map((p, index) => {
               return (

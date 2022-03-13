@@ -1,5 +1,5 @@
 .newPedalForm {
-    background-color: bisque;
+    background-color: grey;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,6 +7,7 @@
     border: solid 1px black;
     border-radius: 10px;
     width: 250px;
+    height: 500px;
     margin-bottom: 20px;
 }
 .newPedalForm form {
@@ -15,12 +16,15 @@
     align-items: center;
     justify-content: center;
     width: 20vmin;
+    margin: 10px;
 }
 
-.newPedalForm input, button {
+.newPedalForm input, .submitButton {
     width: 150px;
     font-size: 10px;
+    margin: -18px;
 }
 button:hover {
     background-color: rgb(23, 189, 23);
 }
+

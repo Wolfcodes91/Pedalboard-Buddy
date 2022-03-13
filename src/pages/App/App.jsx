@@ -14,14 +14,14 @@ export default function App() {
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
   const [boardSpot, setBoardSpot] = useState([
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
+    {number: '0'},
+    {number: '1'},
+    {number: '2'},
+    {number: '3'},
+    {number: '4'},
+    {number: '5'},
+    {number: '6'},
+    {number: '7'},
   ])
 
   useEffect(function(){

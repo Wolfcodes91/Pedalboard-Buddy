@@ -1,7 +1,6 @@
 .board {
-    background-color: bisque;
-    height: 600px;
-    width: 1200px;
+    background-color: black;
+    height: 620px;
     border: solid 10px black;
     color: transparent;
     display: grid;
@@ -21,9 +20,12 @@
 }
 
 .boardItem0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     height: 300px;
-    width: 300px;
+    width: auto;
     background-color: black;
     grid-row-start: 1;
     grid-row-end: 2;
@@ -31,70 +33,91 @@
     grid-column-end: 2;
 }
 .boardItem1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 2;
     grid-column-end: 3;
 }
 .boardItem2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 3;
     grid-column-end: 4;
 }
 .boardItem3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 4;
     grid-column-end: 5;
 }
 .boardItem4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 2;
 }
 .boardItem5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 2;
     grid-column-end: 3;
 }
 .boardItem6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 3;
     grid-column-end: 4;
 }
 .boardItem7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: solid 5px grey;
     background-color: black;
     height: 300px;
-    width: 300px;
+    width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 4;

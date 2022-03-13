@@ -1,14 +1,28 @@
 .pedalList {
-    background-color: beige;
+    background-color: black;
     display: flex;
-    flex-direction: column;  
-    justify-content: center;
-    align-items: center;
-    border: solid 1px black;
+    flex-direction: row;  
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: solid 5px grey;
+    height: 900px;
+    padding: 10px;
     border-radius: 10px;
-    grid-column-start: 5;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    width: 300px;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 5;
     font-size: 1vmin;
+}
+
+.pedalList:hover {
+    border: solid 5px goldenrod;
+}
+
+.pedalListItems {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

@@ -34,45 +34,30 @@ export default function BoardPage({
             newBoardSpot[destBoard] = removed
             setPedalsList(newPedalsList)
             setBoardSpot(newBoardSpot)
-            console.log(result.draggableId, newBoardSpot, 'boop')
+            console.log('boop')
         }
         function moveToList() {
-            // let destList = result.destination.droppableId
-            // const removed = boardSpot.splice(source.index, 1)
             const removed = boardSpot[source.index]
-            // pedalsList.splice(pedalsList, 1, removed)
-            // const newBoardSpot = [
-            //     ...boardSpot.filter((b, index)=> index!==source.index),
-            // ]
             let newList = [...pedalsList, removed]
-            // let newBoardSpot = boardSpot.splice(source.index, 1, {})
             boardSpot[source.index] = {}
-            // let fml = [...newBoardSpot, newBoardSpot]
             setPedalsList(newList)
             setBoardSpot(boardSpot)
-            console.log(removed, newList, boardSpot, 'borp')
+            console.log('borp')
         }
 
         function moveInList() {
             const [reorderedItem] = pedalsList.splice(result.source.index, 1);
             pedalsList.splice(result.destination.index, 0, reorderedItem)
             setPedalsList(pedalsList)
-            console.log(pedalsList, 'bop') 
+            console.log('bop') 
         }
         
         function moveWithinBoard() {
-            console.log(result)
             const [reorderedBoardItem] = boardSpot.splice(result.source.index, 1);
-            // const reorderedBoardItem = [
-            // ...boardSpot.filter((b, index)=> index ===source.index)
-            // ]
-            console.log(reorderedBoardItem)
             let newBoardSpot = [...boardSpot]
-            // newBoardSpot[result.destination.index] = reorderedBoardItem
             newBoardSpot.splice(result.destination.droppableId, 0, reorderedBoardItem)
-            // const newSpot = boardSpot.map((spot, index) => result.destination.index === index ? result : spot )
             setBoardSpot(newBoardSpot)
-            console.log(result, newBoardSpot, 'beep')
+            console.log(newBoardSpot, 'beep')
         }
         
         if (source.droppableId !== destination.droppableId && source.droppableId === 'pedalsList') {
@@ -89,9 +74,12 @@ export default function BoardPage({
         }
         setCount(count + 1)
     }
+    
     return (
         <div className="boardPage">
+            <div className="saveButtonDiv">
             <button className="saveBoardBtn">Save Board</button>
+            </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board
                     boardSpot={boardSpot}

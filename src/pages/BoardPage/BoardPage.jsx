@@ -38,11 +38,19 @@ export default function BoardPage({
         }
         function moveToList() {
             // let destList = result.destination.droppableId
-            const removed = boardSpot.splice(source.index, 1)
-            pedalsList.splice(pedalsList, 1, removed)
-            // setPedalsList(pedalsList)
-            // setBoardSpot(boardSpot)
-            console.log(result.draggableId, boardSpot, pedalsList, 'borp')
+            // const removed = boardSpot.splice(source.index, 1)
+            const removed = boardSpot[source.index]
+            // pedalsList.splice(pedalsList, 1, removed)
+            // const newBoardSpot = [
+            //     ...boardSpot.filter((b, index)=> index!==source.index),
+            // ]
+            let newList = [...pedalsList, removed]
+            // let newBoardSpot = boardSpot.splice(source.index, 1, {})
+            boardSpot[source.index] = {}
+            // let fml = [...newBoardSpot, newBoardSpot]
+            setPedalsList(newList)
+            setBoardSpot(boardSpot)
+            console.log(removed, newList, boardSpot, 'borp')
         }
 
         function moveInList() {

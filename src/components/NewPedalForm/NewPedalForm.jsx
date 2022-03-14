@@ -36,20 +36,6 @@ export default function NewPedalForm({
       console.log('handleAdd')
       }
 
-    // function handleUpdatePedal(evt) {
-    //   evt.preventDefault()
-    //   const edit = new FormData();
-    //   edit.append('photo', fileChangeRef.current.files[0]);
-    //   edit.append('brand', editData.brand);
-    //   edit.append('name', editData.name);
-    //   edit.append('size', editData.size);
-    //   setPedalForm(true)
-    //   updatePedal(edit)
-    //   fileChangeRef.current.value = '';
-    //   console.log('handleUpdate', edit)
-    //   }
-    
-
     function handleUpdatePedal(evt) {
       evt.preventDefault()
       setPedalForm(true)

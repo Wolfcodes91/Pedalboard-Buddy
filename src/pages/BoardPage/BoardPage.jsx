@@ -17,7 +17,14 @@ export default function BoardPage({
     boardSpot,
     setBoardSpot,
     handleSelectDiv,
+    createPedalboard,
+    user,
+    userBoards
 }) {
+    let boardToFind = '';
+    const [boardFormData, setBoardFormData] = useState({
+        name: "",
+    })
     const [count, setCount] = useState(0)
     function handleOnDragEnd(result) {
         if (!result.destination) return;
@@ -34,7 +41,7 @@ export default function BoardPage({
             newBoardSpot[destBoard] = removed
             setPedalsList(newPedalsList)
             setBoardSpot(newBoardSpot)
-            console.log('boop')
+            console.log('boop', boardSpot)
         }
         function moveToList() {
             const removed = boardSpot[source.index]
@@ -74,11 +81,69 @@ export default function BoardPage({
         }
         setCount(count + 1)
     }
+
+    function handleSavePedalboard(evt) {
+        evt.preventDefault()
+        console.log(boardFormData, boardSpot)
+        const form = {
+            name: boardFormData.name,
+            layout: boardSpot,
+            user: user,
+        }
+        createPedalboard(form)
+        console.log('GOOD MORNING', form)
+        setBoardFormData({name: ""});
+      }
+
+    function handleBoardChange(evt) {
+        setBoardFormData({ ...boardFormData,[evt.target.name]: evt.target.value});
+      }
     
+    function chooseBoard(evt) {
+        evt.preventDefault()
+        if (boardToFind === '' || boardToFind === undefined) {
+            if (userBoards[0] === null) return 
+            else boardToFind = userBoards[0] 
+        }
+        // console.log(boardToFind)
+        let removedPedals = boardToFind.layout.filter(pedal => pedal.brand)
+        const newPedalList = pedalsList.filter(pedal => !removedPedals.some(p => p._id === pedal._id));
+        setBoardSpot(boardToFind.layout)
+        console.log(removedPedals, newPedalList)
+        setPedalsList(newPedalList)
+    }
+
+    function handleUserBoardChange(evt) {
+        boardToFind = userBoards[evt.target.options.selectedIndex]
+        
+    }
     return (
         <div className="boardPage">
+
+            <form onSubmit={chooseBoard}>
+                <select onChangeCapture={handleUserBoardChange}>
+                {userBoards.map(option => {
+                        return <option 
+                        value={option._id} 
+                        key={option._id} 
+                        name={option.name}>
+                        {option.name}</option>;
+                    })}
+                </select>
+            <button type="submit">Choose Board</button>
+            </form>
+
             <div className="saveButtonDiv">
-            <button className="saveBoardBtn">Save Board</button>
+            <form onSubmit={handleSavePedalboard}>
+            <input 
+                name="name" 
+                type="text" 
+                placeholder="Name your Board" 
+                value={boardFormData.name} 
+                onChange={handleBoardChange}
+            />
+            <button className="saveBoardBtn" type="submit">Save New Board</button>
+            </form>
             </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board

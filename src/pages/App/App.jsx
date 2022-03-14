@@ -3,12 +3,14 @@ import { useState, useEffect } from "react"
 import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import * as pedalsAPI from "../../utilities/pedals-api" 
+import * as boardsAPI from "../../utilities/boards-api" 
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import BoardPage from "../BoardPage/BoardPage";
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+  const [userBoards, setUserBoards] = useState([])
   const [pedalsList, setPedalsList] = useState([])
   const [activePedal, setActivePedal] = useState(null);
   const [updatedPedal, setUpdatedPedal] = useState()
@@ -29,7 +31,8 @@ export default function App() {
       const pedals = await pedalsAPI.getAll();
       setPedalsList(pedals) 
       setActivePedal(pedals[0] || null);
-      // setBoardSpot(boardSpot)
+      const boards = await boardsAPI.getAll();
+      setUserBoards(boards)
     }
     getPedals();
   }, [])
@@ -38,6 +41,11 @@ export default function App() {
     const pedal = await pedalsAPI.newPedalCreate(formData)
     setPedalsList([...pedalsList, pedal])
     console.log('createPedal')
+  }
+  async function createPedalboard(form) {
+    console.log('createPedalboard', form)
+    const pedalboard = await boardsAPI.newPedalboardCreate(form)
+    setUserBoards([...userBoards, pedalboard])
   }
 
   async function deletePedal(id) {
@@ -78,6 +86,9 @@ export default function App() {
         setPhotos={setPhotos}
         boardSpot={boardSpot}
         setBoardSpot={setBoardSpot}
+        createPedalboard={createPedalboard}
+        user={user}
+        userBoards={userBoards}
         />} 
         />
       </Routes>

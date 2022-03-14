@@ -13,6 +13,7 @@ export default function App() {
   const [userBoards, setUserBoards] = useState([])
   const [pedalsList, setPedalsList] = useState([])
   const [activePedal, setActivePedal] = useState(null);
+  const [selectedBoard, setSelectedBoard] = useState(null)
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
   const [boardSpot, setBoardSpot] = useState([
@@ -89,6 +90,8 @@ export default function App() {
         createPedalboard={createPedalboard}
         user={user}
         userBoards={userBoards}
+        selectedBoard={selectedBoard}
+        setSelectedBoard={setSelectedBoard}
         />} 
         />
       </Routes>

@@ -19,7 +19,9 @@ export default function BoardPage({
     handleSelectDiv,
     createPedalboard,
     user,
-    userBoards
+    userBoards,
+    selectedBoard,
+    setSelectedBoard,
 }) {
     let boardToFind = '';
     const [boardFormData, setBoardFormData] = useState({
@@ -100,6 +102,7 @@ export default function BoardPage({
       }
     
     function chooseBoard(evt) {
+        setPedalsList(pedalsList)
         evt.preventDefault()
         if (boardToFind === '' || boardToFind === undefined) {
             if (userBoards[0] === null) return 
@@ -153,6 +156,8 @@ export default function BoardPage({
                     handleSelectDiv={handleSelectDiv}
                 />
                 <PedalList
+                    boardSpot={boardSpot}
+                    setBoardSpot={setBoardSpot}
                     deletePedal={deletePedal}
                     createPedal={createPedal}
                     pedalsList={pedalsList}

@@ -16,6 +16,8 @@ export default function PedalList({
   photos,
   setPhotos,
   setPedalsList,
+  boardSpot,
+  setBoardSpot
 }) {
   const [editData, setEditData] = useState({
     brand: "",

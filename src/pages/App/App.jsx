@@ -28,7 +28,7 @@ export default function App() {
     {number: '7'},
   ])
   const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
-  
+
   useEffect(function(){
     async function getPedals() {
       const pedals = await pedalsAPI.getAll();

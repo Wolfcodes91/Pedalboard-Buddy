@@ -44,10 +44,10 @@ export default function BoardPage({
             console.log('boop', boardSpot)
         }
         function moveToList() {
-            const removed = boardSpot[source.index]
-            boardSpot[source.index] = {}
+            const newBoard = [...boardSpot];
+            newBoard[source.index] = {}
             // let newList = [...pedals, removed]
-            setBoardSpot(boardSpot)
+            setBoardSpot(newBoard)
             // setPedalsList(newList)
             console.log(pedalsList, 'borp')
         }
@@ -193,6 +193,7 @@ export default function BoardPage({
                     updatePedal={updatePedal}
                     photos={photos}
                     setPhotos={setPhotos}
+                    user={user}
                 />
             </DragDropContext>
         </div>

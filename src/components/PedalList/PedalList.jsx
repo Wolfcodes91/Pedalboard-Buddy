@@ -27,8 +27,6 @@ export default function PedalList({
   })
   const [pedalToUpdate, setPedalToUpdate] = useState()
   const [pedalForm, setPedalForm] = useState(true)
-  
-
   return (
     <div className="pedalList">
       <h1>Pedal List</h1>

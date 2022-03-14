@@ -46,8 +46,8 @@ export default function App() {
   // console.log(chosenBoard)
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
+    console.log('createPedal', pedal)
     setPedalsList([...pedalsList, pedal])
-    console.log('createPedal')
   }
   async function createPedalboard(form) {
     console.log('createPedalboard', form)

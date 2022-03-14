@@ -15,6 +15,7 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.body)
   try {
     if (req.file) {
       // TODO: Remove the console.log after you've verified the output

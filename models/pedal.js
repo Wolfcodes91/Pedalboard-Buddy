@@ -6,6 +6,7 @@ const pedalSchema = new Schema({
     name: { type: String, required: true },
     size: { type: String, enum: ['mini', 'regular', 'doublewide', 'wah/volume'] },
     photo: { type: String },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
     timestamps: true,
 })

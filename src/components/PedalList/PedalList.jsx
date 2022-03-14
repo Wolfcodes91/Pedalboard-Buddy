@@ -41,6 +41,7 @@ export default function PedalList({
         handleUpload={handleUpload}
         setEditData={setEditData}
         editData={editData}
+        user={user}
       />
       <Droppable droppableId="pedalsList">
         {(provided) => (

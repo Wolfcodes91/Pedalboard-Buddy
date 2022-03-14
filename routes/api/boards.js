@@ -12,5 +12,6 @@ router.post('/', ensureLoggedin, boardsCtrl.create)
 
 router.delete('/:id', ensureLoggedin, boardsCtrl.delete);
 
+router.put('/:id', ensureLoggedin, boardsCtrl.update)
 
 module.exports = router;

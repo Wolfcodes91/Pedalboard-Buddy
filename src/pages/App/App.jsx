@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from "react" 
+import { useState } from "react" 
 import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import * as pedalsAPI from "../../utilities/pedals-api" 
@@ -15,6 +15,7 @@ export default function App() {
   const [activePedal, setActivePedal] = useState(null);
   const [selectedBoard, setSelectedBoard] = useState(null)
   const [updatedPedal, setUpdatedPedal] = useState()
+  const [updatedBoard, setUpdatedBoard] = useState()
   const [photos, setPhotos] = useState([]);
   const [chosenBoard, setChosenBoard] = useState([])
   const [boardSpot, setBoardSpot] = useState([
@@ -62,6 +63,13 @@ export default function App() {
     setPedalsList(updatedPedal)
   }
 
+  async function updateBoard(editData, id) {
+    console.log(editData, 'function')
+    const boardToUpdate = await boardsAPI.updateABoard(editData, id)
+    const updatedBoard = userBoards.map(b => b._id === boardToUpdate._id ? boardToUpdate : b)
+    setUpdatedBoard(updatedBoard)
+  }
+
   function handleSelectPedal(pedal) {
     setActivePedal(pedal);
   }
@@ -98,6 +106,7 @@ export default function App() {
         pedals={pedals}
         chosenBoard={chosenBoard}
         setChosenBoard={setChosenBoard}
+        updateBoard={updateBoard}
         />} 
         />
       </Routes>

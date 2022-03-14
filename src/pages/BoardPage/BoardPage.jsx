@@ -28,10 +28,10 @@ export default function BoardPage({
     deleteBoard,
     chosenBoard,
     setChosenBoard,
-    handleClearBoard
+    updateBoard
 }) {
     let boardToFind = '';
-
+    const [boardData, setBoardData] = useState()
     const [boardFormData, setBoardFormData] = useState({
         name: "",
     })
@@ -39,26 +39,24 @@ export default function BoardPage({
 
     useEffect(function(){
         async function getPedals() {
-          console.log('hello')
           const pedals = await pedalsAPI.getAll();
           setPedalsList(pedals) 
           setActivePedal(pedals[0] || null); 
         }
         getPedals();
-      }, [])
+      }, [setActivePedal, setPedalsList])
     
       useEffect(function(){
         async function getBoards() {
-          console.log('hi')
           const boards = await boardsAPI.getAll();
           setUserBoards(boards)
         }
         getBoards()
-      }, [])
+      }, [setUserBoards])
     
       useEffect(function(){
         setChosenBoard(userBoards[0])
-      }, [])
+      }, [setChosenBoard, userBoards])
 
 
 
@@ -145,6 +143,14 @@ export default function BoardPage({
         deleteBoard(chosenBoard)
         handleClearBoard(evt)
     }
+    function handleUpdateBoard(evt) {
+        evt.preventDefault()
+        console.log(boardToFind)
+        chosenBoard.layout = boardSpot
+        updateBoard(chosenBoard)
+        console.log(chosenBoard)
+        handleClearBoard(evt)
+    }
 
     function handleClearBoard(evt) {
         evt.preventDefault()
@@ -187,6 +193,12 @@ export default function BoardPage({
                 <form onSubmit={handleDeleteBoard}>
                 <button type="submit">Delete Board</button>
                 </form>}
+
+            {chosenBoard && 
+                <form onSubmit={handleUpdateBoard}>
+                <button type="submit">Save Changes</button>
+                </form>}
+            
             {!chosenBoard &&
             <div className="saveButtonDiv">
             <form onSubmit={handleSavePedalboard}>

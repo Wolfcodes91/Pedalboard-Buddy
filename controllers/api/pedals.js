@@ -15,12 +15,8 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-  console.log(req.body)
   try {
     if (req.file) {
-      // TODO: Remove the console.log after you've verified the output
-      console.log("SERVER FUNCTION");
-      // The uploadFile function will return the uploaded file's S3 endpoint
       req.body.photo = await uploadFile(req.file);
     }
     const pedal = await Pedal.create(req.body)
@@ -42,12 +38,8 @@ async function deletePedal(req, res) {
 
 async function update(req, res) {
   if (req.file) {
-    // TODO: Remove the console.log after you've verified the output
-    // The uploadFile function will return the uploaded file's S3 endpoint
     req.body.photo = await uploadFile(req.file);
   }
-  console.log(req.body)
   const pedal = await Pedal.findByIdAndUpdate(req.params.id, req.body, { new: true })
-  console.log(pedal)
   res.json(pedal)
 }

@@ -5,7 +5,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 export default function AuthPage({ setUser, boardSpot, setBoardSpot }) {
   const [showLogin, setShowLogin] = useState(true);
 
-  function handleClearBoard(evt) {
+  function handleClearBoard2(evt) {
     evt.preventDefault()
     boardSpot = [
         {number: '0'},
@@ -26,11 +26,11 @@ export default function AuthPage({ setUser, boardSpot, setBoardSpot }) {
       { showLogin ?
         <LoginForm 
         setUser={setUser} 
-        handleClearBoard={handleClearBoard}
+        handleClearBoard2={handleClearBoard2}
         />
         :
         <SignUpForm setUser={setUser} 
-        handleClearBoard={handleClearBoard}
+        handleClearBoard2={handleClearBoard2}
         />
       }
     </main>

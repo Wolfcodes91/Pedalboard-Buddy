@@ -20,9 +20,10 @@ export default function BoardPage({
     createPedalboard,
     user,
     userBoards,
-    selectedBoard,
-    setSelectedBoard,
-    deleteBoard
+    pedals,
+    deleteBoard,
+    chosenBoard,
+    setChosenBoard
 }) {
     let boardToFind = '';
     const [boardFormData, setBoardFormData] = useState({
@@ -36,29 +37,24 @@ export default function BoardPage({
         function moveToBoard() {
             let destBoard = parseInt(result.destination.droppableId)
             if(boardSpot[destBoard].brand) return 
-            const removed = pedalsList[source.index]
-            const newPedalsList = [
-                ...pedalsList.filter((p, index)=> index!==source.index),
-            ]
+            const removed = pedals[source.index]
             let newBoardSpot = [...boardSpot]
             newBoardSpot[destBoard] = removed
-            setPedalsList(newPedalsList)
             setBoardSpot(newBoardSpot)
             console.log('boop', boardSpot)
         }
         function moveToList() {
-            // const removed = boardSpot[source.index]
-            // let newList = [...pedalsList, removed]
+            const removed = boardSpot[source.index]
             boardSpot[source.index] = {}
-            // setPedalsList(pedalsList)
+            // let newList = [...pedals, removed]
             setBoardSpot(boardSpot)
-            console.log('borp')
+            // setPedalsList(newList)
+            console.log(pedalsList, 'borp')
         }
 
         function moveInList() {
-            const [reorderedItem] = pedalsList.splice(result.source.index, 1);
-            pedalsList.splice(result.destination.index, 0, reorderedItem)
-            // setPedalsList(pedalsList)
+            const [reorderedItem] = pedals.splice(result.source.index, 1);
+            pedals.splice(result.destination.index, 0, reorderedItem)
             console.log('bop') 
         }
         
@@ -103,19 +99,15 @@ export default function BoardPage({
       }
     
     function chooseBoard(evt) {
-        // setPedalsList(pedalsList)
         evt.preventDefault()
         if (boardToFind === '' || boardToFind === undefined) {
             if (userBoards[0] === null) return 
             else boardToFind = userBoards[0] 
         }
-        console.log(boardToFind)
-        // let removedPedals = boardToFind.layout.filter(pedal => pedal.brand)
-        // const newPedalList = pedalsList.filter(pedal => !removedPedals.some(p => p._id === pedal._id));
+        setChosenBoard(boardToFind)
         setBoardSpot(boardToFind.layout)
-        // console.log(removedPedals, newPedalList)
-        // setPedalsList(newPedalList)
     }
+
 
     function handleUserBoardChange(evt) {
         boardToFind = userBoards[evt.target.options.selectedIndex]
@@ -123,8 +115,8 @@ export default function BoardPage({
     }
     function handleDeleteBoard(evt) {
         evt.preventDefault()
-        console.log(boardToFind)
-        deleteBoard(boardToFind)
+        deleteBoard(chosenBoard)
+        handleClearBoard(evt)
     }
 
     function handleClearBoard(evt) {
@@ -142,7 +134,6 @@ export default function BoardPage({
         setBoardSpot(boardSpot)
     }
 
-    console.log(boardSpot)
     return (
         <div className="boardPage">
 
@@ -158,15 +149,16 @@ export default function BoardPage({
                 </select>
             <button type="submit">Choose Board</button>
             </form>
-            {boardToFind !== undefined && 
-                <form onSubmit={handleDeleteBoard}>
-                <button type="submit">Delete</button>
-                </form>}
+
 
                 <form onSubmit={handleClearBoard}>
                 <button type="submit">Clear Board</button>
             </form>
 
+            {chosenBoard && 
+                <form onSubmit={handleDeleteBoard}>
+                <button type="submit">Delete Board</button>
+                </form>}
 
             <div className="saveButtonDiv">
             <form onSubmit={handleSavePedalboard}>
@@ -189,6 +181,7 @@ export default function BoardPage({
                     handleSelectDiv={handleSelectDiv}
                 />
                 <PedalList
+                    pedals={pedals}
                     boardSpot={boardSpot}
                     setBoardSpot={setBoardSpot}
                     deletePedal={deletePedal}

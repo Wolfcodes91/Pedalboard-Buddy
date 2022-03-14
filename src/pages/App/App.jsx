@@ -16,6 +16,7 @@ export default function App() {
   const [selectedBoard, setSelectedBoard] = useState(null)
   const [updatedPedal, setUpdatedPedal] = useState()
   const [photos, setPhotos] = useState([]);
+  const [chosenBoard, setChosenBoard] = useState([])
   const [boardSpot, setBoardSpot] = useState([
     {number: '0'},
     {number: '1'},
@@ -26,7 +27,8 @@ export default function App() {
     {number: '6'},
     {number: '7'},
   ])
-
+  const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
+  
   useEffect(function(){
     async function getPedals() {
       const pedals = await pedalsAPI.getAll();
@@ -38,6 +40,10 @@ export default function App() {
     getPedals();
   }, [])
 
+  useEffect(function(){
+    setChosenBoard(userBoards[0])
+  }, [])
+  // console.log(chosenBoard)
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
     setPedalsList([...pedalsList, pedal])
@@ -55,8 +61,9 @@ export default function App() {
     setPedalsList(upDatedPedalList)
   }
 
-  async function deleteBoard(id) {
-    const boardToDelete = await boardsAPI.deleteABoard(id)
+  async function deleteBoard(board) {
+    console.log(board)
+    const boardToDelete = await boardsAPI.deleteABoard(board)
     const upDatedBoardList = userBoards.filter(board => boardToDelete._id !== board._id)
     setUserBoards(upDatedBoardList)
   }
@@ -99,6 +106,9 @@ export default function App() {
         selectedBoard={selectedBoard}
         setSelectedBoard={setSelectedBoard}
         deleteBoard={deleteBoard}
+        pedals={pedals}
+        chosenBoard={chosenBoard}
+        setChosenBoard={setChosenBoard}
         />} 
         />
       </Routes>

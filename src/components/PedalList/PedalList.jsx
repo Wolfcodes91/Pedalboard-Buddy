@@ -17,7 +17,8 @@ export default function PedalList({
   setPhotos,
   setPedalsList,
   boardSpot,
-  setBoardSpot
+  setBoardSpot,
+  pedals
 }) {
   const [editData, setEditData] = useState({
     brand: "",
@@ -26,7 +27,7 @@ export default function PedalList({
   })
   const [pedalToUpdate, setPedalToUpdate] = useState()
   const [pedalForm, setPedalForm] = useState(true)
-  const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
+  
 
   return (
     <div className="pedalList">

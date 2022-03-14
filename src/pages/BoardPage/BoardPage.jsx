@@ -55,7 +55,7 @@ export default function BoardPage({
       }, [setUserBoards])
     
       useEffect(function(){
-        setChosenBoard(userBoards[0])
+        setChosenBoard(null)
       }, [setChosenBoard, userBoards])
 
 

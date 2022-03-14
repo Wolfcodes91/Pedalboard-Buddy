@@ -17,7 +17,7 @@ export default function App() {
   const [updatedPedal, setUpdatedPedal] = useState()
   const [updatedBoard, setUpdatedBoard] = useState()
   const [photos, setPhotos] = useState([]);
-  const [chosenBoard, setChosenBoard] = useState([])
+  const [chosenBoard, setChosenBoard] = useState(null)
   const [boardSpot, setBoardSpot] = useState([
     {number: '0'},
     {number: '1'},

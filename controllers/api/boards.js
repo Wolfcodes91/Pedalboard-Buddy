@@ -3,6 +3,7 @@ const Board = require("../../models/board")
 module.exports = {
     index,
     create,
+    delete: deleteBoard,
   };
 
 
@@ -18,4 +19,9 @@ async function index(req, res) {
       const board = await Board.create(req.body)
       console.log('I am the server', board)
       res.json(board)
+}
+
+async function deleteBoard(req, res) {
+    const boarddlt = await Board.findByIdAndDelete(req.body.id)
+    res.json(boarddlt)
 }

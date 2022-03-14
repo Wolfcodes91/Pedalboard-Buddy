@@ -22,6 +22,7 @@ export default function BoardPage({
     userBoards,
     selectedBoard,
     setSelectedBoard,
+    deleteBoard
 }) {
     let boardToFind = '';
     const [boardFormData, setBoardFormData] = useState({
@@ -46,10 +47,10 @@ export default function BoardPage({
             console.log('boop', boardSpot)
         }
         function moveToList() {
-            const removed = boardSpot[source.index]
-            let newList = [...pedalsList, removed]
+            // const removed = boardSpot[source.index]
+            // let newList = [...pedalsList, removed]
             boardSpot[source.index] = {}
-            setPedalsList(newList)
+            // setPedalsList(pedalsList)
             setBoardSpot(boardSpot)
             console.log('borp')
         }
@@ -57,7 +58,7 @@ export default function BoardPage({
         function moveInList() {
             const [reorderedItem] = pedalsList.splice(result.source.index, 1);
             pedalsList.splice(result.destination.index, 0, reorderedItem)
-            setPedalsList(pedalsList)
+            // setPedalsList(pedalsList)
             console.log('bop') 
         }
         
@@ -102,13 +103,13 @@ export default function BoardPage({
       }
     
     function chooseBoard(evt) {
-        setPedalsList(pedalsList)
+        // setPedalsList(pedalsList)
         evt.preventDefault()
         if (boardToFind === '' || boardToFind === undefined) {
             if (userBoards[0] === null) return 
             else boardToFind = userBoards[0] 
         }
-        // console.log(boardToFind)
+        console.log(boardToFind)
         // let removedPedals = boardToFind.layout.filter(pedal => pedal.brand)
         // const newPedalList = pedalsList.filter(pedal => !removedPedals.some(p => p._id === pedal._id));
         setBoardSpot(boardToFind.layout)
@@ -120,6 +121,28 @@ export default function BoardPage({
         boardToFind = userBoards[evt.target.options.selectedIndex]
         
     }
+    function handleDeleteBoard(evt) {
+        evt.preventDefault()
+        console.log(boardToFind)
+        deleteBoard(boardToFind)
+    }
+
+    function handleClearBoard(evt) {
+        evt.preventDefault()
+        boardSpot = [
+            {number: '0'},
+            {number: '1'},
+            {number: '2'},
+            {number: '3'},
+            {number: '4'},
+            {number: '5'},
+            {number: '6'},
+            {number: '7'},
+        ]
+        setBoardSpot(boardSpot)
+    }
+
+    console.log(boardSpot)
     return (
         <div className="boardPage">
 
@@ -135,6 +158,15 @@ export default function BoardPage({
                 </select>
             <button type="submit">Choose Board</button>
             </form>
+            {boardToFind !== undefined && 
+                <form onSubmit={handleDeleteBoard}>
+                <button type="submit">Delete</button>
+                </form>}
+
+                <form onSubmit={handleClearBoard}>
+                <button type="submit">Clear Board</button>
+            </form>
+
 
             <div className="saveButtonDiv">
             <form onSubmit={handleSavePedalboard}>
@@ -147,6 +179,7 @@ export default function BoardPage({
             />
             <button className="saveBoardBtn" type="submit">Save New Board</button>
             </form>
+         
             </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board

@@ -9,3 +9,7 @@ export function newPedalboardCreate(form) {
   export function getAll() {
     return sendRequest(BASE_URL);
   }
+
+  export function deleteABoard(id) {
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
+  }

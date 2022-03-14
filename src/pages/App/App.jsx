@@ -55,6 +55,12 @@ export default function App() {
     setPedalsList(upDatedPedalList)
   }
 
+  async function deleteBoard(id) {
+    const boardToDelete = await boardsAPI.deleteABoard(id)
+    const upDatedBoardList = userBoards.filter(board => boardToDelete._id !== board._id)
+    setUserBoards(upDatedBoardList)
+  }
+
   async function updatePedal(editData) {
     console.log('2', editData)
     const pedalToUpdate = await pedalsAPI.updateAPedal(editData)
@@ -92,6 +98,7 @@ export default function App() {
         userBoards={userBoards}
         selectedBoard={selectedBoard}
         setSelectedBoard={setSelectedBoard}
+        deleteBoard={deleteBoard}
         />} 
         />
       </Routes>

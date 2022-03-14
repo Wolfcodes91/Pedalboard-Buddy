@@ -9,5 +9,7 @@ router.get('/', boardsCtrl.index);
 // POST /api/boards
 router.post('/', boardsCtrl.create)
 
+router.delete('/:id', boardsCtrl.delete);
+
 
 module.exports = router;

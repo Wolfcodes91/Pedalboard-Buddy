@@ -8,7 +8,7 @@ export default function NewPedalForm({
      setPedalForm, 
      updatePedal,
      editData,
-     setEditData,
+     setEditData
     }) {
    
     const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ export default function NewPedalForm({
     // create a reference to the <input>, i.e.,
     // inputRef.current will be the <input> DOM element
     const fileInputRef = useRef();
-    const fileChangeRef = useRef()
+    const fileChangeRef = useRef();
     
     function handleAddNewPedal(evt) {
       evt.preventDefault()
@@ -38,9 +38,17 @@ export default function NewPedalForm({
 
     function handleUpdatePedal(evt) {
       evt.preventDefault()
+      console.log(editData)
+      const form = new FormData();
+      if (fileChangeRef.current.files.length) form.append('photo', fileChangeRef.current.files[0]);
+      form.append('brand', editData.brand);
+      form.append('name', editData.name);
+      form.append('size', editData.size);
+      console.log('handleUpdate', form)
       setPedalForm(true)
-      updatePedal(editData)
-      console.log('handleUpdate', editData)
+      updatePedal(form, pedalToUpdate._id)
+      setEditData({ brand: "", name: "", size: "regular"});
+      fileChangeRef.current.value = null
     }
 
     function handleChange(evt) {

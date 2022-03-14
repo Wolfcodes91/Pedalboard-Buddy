@@ -68,11 +68,10 @@ export default function App() {
     setUserBoards(upDatedBoardList)
   }
 
-  async function updatePedal(editData) {
-    console.log('2', editData)
-    const pedalToUpdate = await pedalsAPI.updateAPedal(editData)
+  async function updatePedal(editData, id) {
+    const pedalToUpdate = await pedalsAPI.updateAPedal(editData, id)
     const updatedPedal = pedalsList.map(p => p._id === pedalToUpdate._id ? pedalToUpdate : p)
-    setUpdatedPedal(pedalToUpdate)
+    // setUpdatedPedal(pedalToUpdate)
     setPedalsList(updatedPedal)
   }
 

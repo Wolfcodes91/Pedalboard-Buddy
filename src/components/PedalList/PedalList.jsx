@@ -66,10 +66,10 @@ export default function PedalList({
                         handleUpload={handleUpload}
                         photos={photos}
                         setPhotos={setPhotos}
-                        setEditData={setEditData}
                         index={index}
                         id={p._id}
-
+                        setEditData={setEditData}
+                        editData={editData}
                       />
                     </div>
                   )}

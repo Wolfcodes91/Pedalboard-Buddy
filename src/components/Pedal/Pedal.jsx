@@ -12,7 +12,8 @@ export default function Pedal({
     setEditData,
     index,
     id,
-    user
+    user,
+    // setEditData
 }) {
 
     if (p.length) p = p[0]
@@ -21,10 +22,10 @@ export default function Pedal({
         deletePedal(id)
     }
 
-    function handleUpdatePedalForm(id) {
+    function handleUpdatePedalForm(p) {
         console.log('click', p)
         setPedalForm(false)
-        setPedalToUpdate(activePedal)
+        setPedalToUpdate(p)
         setEditData(p)
     }
     return (
@@ -39,7 +40,7 @@ export default function Pedal({
             </div>
             {user &&
                 <div className="pedalButtonBox">
-                    <button className="updateButton" onClick={handleUpdatePedalForm}>Edit</button>
+                    <button className="updateButton" onClick={() => handleUpdatePedalForm(p)}>Edit</button>
                     <button className="dltButton" onClick={() => handleDeletePedal(p._id)}>Delete</button>
                 </div>}
         </div>

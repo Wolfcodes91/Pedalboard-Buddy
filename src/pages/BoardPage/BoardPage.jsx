@@ -46,10 +46,8 @@ export default function BoardPage({
         function moveToList() {
             const newBoard = [...boardSpot];
             newBoard[source.index] = {}
-            // let newList = [...pedals, removed]
             setBoardSpot(newBoard)
-            // setPedalsList(newList)
-            console.log(pedalsList, 'borp')
+
         }
 
         function moveInList() {
@@ -59,11 +57,10 @@ export default function BoardPage({
         }
         
         function moveWithinBoard() {
-            const [reorderedBoardItem] = boardSpot.splice(result.source.index, 1);
             let newBoardSpot = [...boardSpot]
-            newBoardSpot.splice(result.destination.droppableId, 0, reorderedBoardItem)
+            let pedalSave = newBoardSpot[result.destination.droppableId];
+            newBoardSpot[result.destination.droppableId] = newBoardSpot.splice(result.source.index, 1, pedalSave)[0];
             setBoardSpot(newBoardSpot)
-            console.log(newBoardSpot, 'beep')
         }
         
         if (source.droppableId !== destination.droppableId && source.droppableId === 'pedalsList') {

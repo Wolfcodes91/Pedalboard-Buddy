@@ -109,11 +109,11 @@ export default function BoardPage({
             else boardToFind = userBoards[0] 
         }
         // console.log(boardToFind)
-        let removedPedals = boardToFind.layout.filter(pedal => pedal.brand)
-        const newPedalList = pedalsList.filter(pedal => !removedPedals.some(p => p._id === pedal._id));
+        // let removedPedals = boardToFind.layout.filter(pedal => pedal.brand)
+        // const newPedalList = pedalsList.filter(pedal => !removedPedals.some(p => p._id === pedal._id));
         setBoardSpot(boardToFind.layout)
-        console.log(removedPedals, newPedalList)
-        setPedalsList(newPedalList)
+        // console.log(removedPedals, newPedalList)
+        // setPedalsList(newPedalList)
     }
 
     function handleUserBoardChange(evt) {

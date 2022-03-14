@@ -26,7 +26,7 @@ export default function PedalList({
   })
   const [pedalToUpdate, setPedalToUpdate] = useState()
   const [pedalForm, setPedalForm] = useState(true)
-
+  const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
 
   return (
     <div className="pedalList">
@@ -46,8 +46,8 @@ export default function PedalList({
       <Droppable droppableId="pedalsList">
         {(provided) => (
           <div className="pedalListItems" {...provided.droppableProps} ref={provided.innerRef}>
-            {pedalsList.length === 0 && <span className="no-pedals">No Pedals</span>}
-            {pedalsList.map((p, index) => {
+           {pedals.length === 0 && <span className="no-pedals">No Pedals</span>}
+            {pedals.map((p, index) => {
               return (
                 <Draggable key={p._id} draggableId={p._id} index={index}>
                   {(provided) => (
@@ -84,9 +84,4 @@ export default function PedalList({
     </div>
   )
 }
-
-
-
-
-// <div {...provided.droppableProps} ref={provided.innerRef}>
 

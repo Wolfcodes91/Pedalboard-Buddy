@@ -29,21 +29,8 @@ export default function App() {
   ])
   const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
 
-  useEffect(function(){
-    async function getPedals() {
-      const pedals = await pedalsAPI.getAll();
-      setPedalsList(pedals) 
-      setActivePedal(pedals[0] || null);
-      const boards = await boardsAPI.getAll();
-      setUserBoards(boards)
-    }
-    getPedals();
-  }, [])
 
-  useEffect(function(){
-    setChosenBoard(userBoards[0])
-  }, [])
-  // console.log(chosenBoard)
+
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
     console.log('createPedal', pedal)
@@ -96,6 +83,7 @@ export default function App() {
         handleSelectPedal={handleSelectPedal}
         updatePedal={updatePedal}
         activePedal={activePedal}
+        setActivePedal={setActivePedal}
         photos={photos}
         setPhotos={setPhotos}
         boardSpot={boardSpot}
@@ -103,6 +91,7 @@ export default function App() {
         createPedalboard={createPedalboard}
         user={user}
         userBoards={userBoards}
+        setUserBoards={setUserBoards}
         selectedBoard={selectedBoard}
         setSelectedBoard={setSelectedBoard}
         deleteBoard={deleteBoard}

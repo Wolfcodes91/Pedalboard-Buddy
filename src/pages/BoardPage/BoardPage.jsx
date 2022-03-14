@@ -2,9 +2,13 @@ import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
 import Board from "../../components/Board/Board"
 import { DragDropContext } from 'react-beautiful-dnd'
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import * as pedalsAPI from "../../utilities/pedals-api" 
+import * as boardsAPI from "../../utilities/boards-api" 
 
 export default function BoardPage({
+    setActivePedal,
+    setUserBoards,
     createPedal,
     pedalsList,
     setPedalsList,
@@ -27,10 +31,37 @@ export default function BoardPage({
     handleClearBoard
 }) {
     let boardToFind = '';
+
     const [boardFormData, setBoardFormData] = useState({
         name: "",
     })
     const [count, setCount] = useState(0)
+
+    useEffect(function(){
+        async function getPedals() {
+          console.log('hello')
+          const pedals = await pedalsAPI.getAll();
+          setPedalsList(pedals) 
+          setActivePedal(pedals[0] || null); 
+        }
+        getPedals();
+      }, [])
+    
+      useEffect(function(){
+        async function getBoards() {
+          console.log('hi')
+          const boards = await boardsAPI.getAll();
+          setUserBoards(boards)
+        }
+        getBoards()
+      }, [])
+    
+      useEffect(function(){
+        setChosenBoard(userBoards[0])
+      }, [])
+
+
+
     function handleOnDragEnd(result) {
         if (!result.destination) return;
         const { source, destination } = result
@@ -106,10 +137,8 @@ export default function BoardPage({
         setBoardSpot(boardToFind.layout)
     }
 
-
     function handleUserBoardChange(evt) {
-        boardToFind = userBoards[evt.target.options.selectedIndex]
-        
+        boardToFind = userBoards[evt.target.options.selectedIndex]    
     }
     function handleDeleteBoard(evt) {
         evt.preventDefault()
@@ -130,6 +159,7 @@ export default function BoardPage({
             {number: '7'},
         ]
         setBoardSpot(boardSpot)
+        setChosenBoard(null)
       }
 
     return (
@@ -157,7 +187,7 @@ export default function BoardPage({
                 <form onSubmit={handleDeleteBoard}>
                 <button type="submit">Delete Board</button>
                 </form>}
-
+            {!chosenBoard &&
             <div className="saveButtonDiv">
             <form onSubmit={handleSavePedalboard}>
             <input 
@@ -169,8 +199,8 @@ export default function BoardPage({
             />
             <button className="saveBoardBtn" type="submit">Save New Board</button>
             </form>
-         
             </div>
+            }
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board
                     boardSpot={boardSpot}

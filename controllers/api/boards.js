@@ -8,7 +8,7 @@ module.exports = {
 
 
 async function index(req, res) {
-    console.log('im in the index controller')
+    console.log('im in the index controller', req.user._id)
     const boards = await Board.find({user: req.user._id}).sort('name')
     console.log(boards)
     res.json(boards);

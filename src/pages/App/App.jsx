@@ -79,6 +79,7 @@ export default function App() {
     setActivePedal(pedal);
   }
 
+
   return (
     <main className="App">
       { user ? 
@@ -113,7 +114,11 @@ export default function App() {
       </Routes>
       </>
         :
-        <AuthPage setUser={setUser} /> 
+        <AuthPage 
+        setUser={setUser}
+        boardSpot={boardSpot}
+        setBoardSpot={setBoardSpot}
+         /> 
       }
       
     </main>

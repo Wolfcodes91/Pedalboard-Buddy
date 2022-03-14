@@ -23,7 +23,8 @@ export default function BoardPage({
     pedals,
     deleteBoard,
     chosenBoard,
-    setChosenBoard
+    setChosenBoard,
+    handleClearBoard
 }) {
     let boardToFind = '';
     const [boardFormData, setBoardFormData] = useState({
@@ -129,7 +130,7 @@ export default function BoardPage({
             {number: '7'},
         ]
         setBoardSpot(boardSpot)
-    }
+      }
 
     return (
         <div className="boardPage">

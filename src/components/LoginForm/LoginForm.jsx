@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm({ setUser, handleClearBoard }) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -16,6 +16,7 @@ export default function LoginForm({ setUser }) {
   async function handleSubmit(evt) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
+    handleClearBoard(evt)
     try {
       // The promise returned by the signUp service method 
       // will resolve to the user object included in the

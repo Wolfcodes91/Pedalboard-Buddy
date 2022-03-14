@@ -176,6 +176,7 @@ export default function BoardPage({
                     setBoardSpot={setBoardSpot}
                     pedalsList={pedalsList}
                     handleSelectDiv={handleSelectDiv}
+                    user={user}
                 />
                 <PedalList
                     pedals={pedals}

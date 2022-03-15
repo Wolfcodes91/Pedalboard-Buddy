@@ -16,14 +16,13 @@
     justify-content: space-around;
     align-items: center;
     height: 22vmin;
-    margin-bottom: 4vmin;;
+    margin: 3vmin;
 }
 
 .boardPage button, input, select {
     grid-column-start: 1;
     grid-column-end: 4;
     font-size: 1vmin;
-    width: auto;
     height: 3vmin;
   
 }

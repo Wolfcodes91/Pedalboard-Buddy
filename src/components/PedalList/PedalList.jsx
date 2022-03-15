@@ -24,7 +24,9 @@ export default function PedalList({
   const [pedalToUpdate, setPedalToUpdate] = useState()
   const [pedalForm, setPedalForm] = useState(true)
   return (
-    <div className="pedalList">
+    <div className="pedalList"
+    style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
+    >
       <NewPedalForm
         createPedal={createPedal}
         activePedal={activePedal}

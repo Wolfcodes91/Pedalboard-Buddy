@@ -1,0 +1,54 @@
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 5;
+
+}
+
+.logIn {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(213, 233, 250), rgb(172, 249, 250), rgb(156, 238, 223));
+    padding: 5vmin;
+    border-radius: 3vmin;
+    border: solid 0.2vmin black;
+}
+
+.homeLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(213, 233, 250), rgb(191, 246, 247), rgb(202, 248, 240));   
+    height: 20vmin;
+    border-radius: 3vmin;
+    border: solid 0.2vmin black;
+}
+
+.logos {
+    height: 20vmin;
+}
+
+.blurb {
+    font-size: 1.5vmin;
+    /* color: white; */
+    border-radius: 3vmin;
+    border: solid 0.2vmin black;
+}
+.showBoard {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 3vmin;
+}
+.boardpic {
+    width: 60vmin;
+}

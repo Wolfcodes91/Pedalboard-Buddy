@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2vmin;
+    /* padding: 2vmin; */
+    font-size: 3vmin;
+}
+.loginInput {
+    margin: 2vmin;
+    width: 30vmin;
+    height: 3vmin;
+    font-size: 1vmin;
+}
+.loginButton {
+    width: 30vmin;
+    font-size: 2vmin;
+}
+
+.loginButton:hover {
+    background-color: rgb(202, 244, 245);
+}

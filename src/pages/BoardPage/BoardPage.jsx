@@ -149,7 +149,6 @@ export default function BoardPage({
         chosenBoard.layout = boardSpot
         updateBoard(chosenBoard)
         console.log(chosenBoard)
-        handleClearBoard(evt)
     }
 
     function handleClearBoard(evt) {

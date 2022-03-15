@@ -1,8 +1,8 @@
 .pedalList {
     background-color: transparent;
     display: flex;
-    flex-direction: row;  
-    justify-content: flex-start;
+    flex-direction: row-reverse;  
+    justify-content: flex-end;
     align-items: flex-start;
     border: solid 5px grey;
     padding: 10px;

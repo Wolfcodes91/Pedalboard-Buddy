@@ -15,14 +15,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* height: 22vmin; */
     margin: 3vmin;
 }
 
 .boardPage button, input, select {
     grid-column-start: 1;
     grid-column-end: 4;
-    font-size: 1vmin;
+    font-size: 1.5vmin;
     height: 3vmin;
   
 }

@@ -20,9 +20,7 @@
 
 .newPedalForm input, .submitButton, .chooseFileButton, select {
     width: 15vmin;
-    font-size: 1vmin;
-    /* height: 2vmin; */
-    /* margin: 1vmin; */
+    font-size: 1.5vmin;
 }
 
 button:hover {
@@ -33,5 +31,5 @@ button:hover {
     height: 12vmin;
 }
 h3 {
-    font-size: 1.8vmin;
+    font-size: 2vmin;
 }

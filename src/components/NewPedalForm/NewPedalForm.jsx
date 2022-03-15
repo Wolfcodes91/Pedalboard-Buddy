@@ -66,7 +66,7 @@ export default function NewPedalForm({
         { pedalForm ?
         <div className="newPedalForm">
         <h3>Add a Pedal</h3>
-        <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-1.svg"></object>
+        <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-2.svg"></object>
         <form onSubmit={handleAddNewPedal}>
             <input 
             name="brand"
@@ -91,6 +91,7 @@ export default function NewPedalForm({
         :
         <div  className="newPedalForm">
         <h3>Edit a Pedal</h3>
+        <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-4.svg"></object>
         <form onSubmit={handleUpdatePedal}>
             <input 
             name="brand"

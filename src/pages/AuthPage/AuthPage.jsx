@@ -35,6 +35,7 @@ export default function AuthPage({ setUser, boardSpot, setBoardSpot }) {
         <p>Add pedals or choose from the list.</p>
         <p>Drag them to your board and save!</p>
         <p>Edit your saved boards/pedals.</p>
+        <p>Sign up and login to start building!</p>
       </div>
 
       <div className='showBoard'>

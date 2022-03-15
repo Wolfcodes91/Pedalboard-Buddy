@@ -173,6 +173,7 @@ export default function BoardPage({
         >
             <div className="forms">
             <form className="form1" onSubmit={chooseBoard}>
+                <span>
                 <select onChangeCapture={handleUserBoardChange}>
                 {userBoards.map(option => {
                         return <option 
@@ -182,27 +183,36 @@ export default function BoardPage({
                         {option.name}</option>;
                     })}
                 </select>
-            <button className="chooseBoardBtn" type="submit">Choose Board</button>
+            
+                <button className="chooseBoardBtn" type="submit">Choose Board</button>
+                </span>
             </form>
 
 
-                <form className="form2" onSubmit={handleClearBoard}>
-                <button className="clearBoardBtn" type="submit">Clear Board</button>
+            <form className="form2" onSubmit={handleClearBoard}>
+                <span>
+                    <button className="clearBoardBtn" type="submit">Clear Board</button>
+                </span>
             </form>
 
             {chosenBoard && 
                 <form className="form3" onSubmit={handleDeleteBoard}>
+                <span>
                 <button className="deleteBoardBtn" type="submit">Delete Board</button>
+                </span>
                 </form>}
 
             {chosenBoard && 
                 <form className="form4" onSubmit={handleUpdateBoard}>
+                <span>
                 <button className="saveBoardBtn" type="submit">Save Changes</button>
+                </span>
                 </form>}
             
             {!chosenBoard &&
             <div className="saveButtonDiv">
             <form className="form5" onSubmit={handleSavePedalboard}>
+            <span>
             <input 
                 name="name" 
                 type="text" 
@@ -211,6 +221,7 @@ export default function BoardPage({
                 onChange={handleBoardChange}
             />
             <button className="saveBoardBtn" type="submit">Save New Board</button>
+            </span>
             </form>
             </div>
             }

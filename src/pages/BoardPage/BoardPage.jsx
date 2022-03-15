@@ -169,9 +169,11 @@ export default function BoardPage({
       }
 
     return (
-        <div className="boardPage">
-
-            <form onSubmit={chooseBoard}>
+        <div className="boardPage"
+        style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
+        >
+            <div className="forms">
+            <form className="form1" onSubmit={chooseBoard}>
                 <select onChangeCapture={handleUserBoardChange}>
                 {userBoards.map(option => {
                         return <option 
@@ -181,27 +183,27 @@ export default function BoardPage({
                         {option.name}</option>;
                     })}
                 </select>
-            <button type="submit">Choose Board</button>
+            <button className="chooseBoardBtn" type="submit">Choose Board</button>
             </form>
 
 
-                <form onSubmit={handleClearBoard}>
-                <button type="submit">Clear Board</button>
+                <form className="form2" onSubmit={handleClearBoard}>
+                <button className="clearBoardBtn" type="submit">Clear Board</button>
             </form>
 
             {chosenBoard && 
-                <form onSubmit={handleDeleteBoard}>
-                <button type="submit">Delete Board</button>
+                <form className="form3" onSubmit={handleDeleteBoard}>
+                <button className="deleteBoardBtn" type="submit">Delete Board</button>
                 </form>}
 
             {chosenBoard && 
-                <form onSubmit={handleUpdateBoard}>
-                <button type="submit">Save Changes</button>
+                <form className="form4" onSubmit={handleUpdateBoard}>
+                <button className="saveBoardBtn" type="submit">Save Changes</button>
                 </form>}
             
             {!chosenBoard &&
             <div className="saveButtonDiv">
-            <form onSubmit={handleSavePedalboard}>
+            <form className="form5" onSubmit={handleSavePedalboard}>
             <input 
                 name="name" 
                 type="text" 
@@ -213,6 +215,7 @@ export default function BoardPage({
             </form>
             </div>
             }
+            </div>
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board
                     boardSpot={boardSpot}

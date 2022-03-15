@@ -1,22 +1,21 @@
 .pedalList {
-    background-color: black;
+    background-color: transparent;
     display: flex;
     flex-direction: row;  
     justify-content: flex-start;
     align-items: flex-start;
     border: solid 5px grey;
-    height: 900px;
     padding: 10px;
     border-radius: 10px;
     grid-column-start: 1;
     grid-column-end: 6;
     grid-row-start: 3;
     grid-row-end: 5;
-    font-size: 1vmin;
+
 }
 
 .pedalList:hover {
-    border: solid 5px goldenrod;
+    border: solid 5px blue;
 }
 
 .pedalListItems {

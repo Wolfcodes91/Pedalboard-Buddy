@@ -1,7 +1,8 @@
 .board {
     background-color: black;
-    height: 620px;
-    border: solid 10px black;
+    height: 600px;
+    border: solid 5px black;
+    border-radius: 10px;
     color: transparent;
     display: grid;
     grid-template-columns: 4;
@@ -14,6 +15,7 @@
 .board button {
     background-color: transparent;
     border-color: transparent;
+    color: transparent;
 }
 .board button:hover {
     background-color: transparent;

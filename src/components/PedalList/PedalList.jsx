@@ -6,7 +6,6 @@ import "./PedalList.css"
 
 export default function PedalList({
   createPedal,
-  pedalsList,
   handleSelectPedal,
   activePedal,
   deletePedal,
@@ -15,9 +14,6 @@ export default function PedalList({
   handleUpload,
   photos,
   setPhotos,
-  setPedalsList,
-  boardSpot,
-  setBoardSpot,
   pedals
 }) {
   const [editData, setEditData] = useState({
@@ -29,7 +25,6 @@ export default function PedalList({
   const [pedalForm, setPedalForm] = useState(true)
   return (
     <div className="pedalList">
-      <h1>Pedal List</h1>
       <NewPedalForm
         createPedal={createPedal}
         activePedal={activePedal}
@@ -45,7 +40,9 @@ export default function PedalList({
       />
       <Droppable droppableId="pedalsList">
         {(provided) => (
-          <div className="pedalListItems" {...provided.droppableProps} ref={provided.innerRef}>
+          <div className="pedalListItems" 
+          {...provided.droppableProps} ref={provided.innerRef}
+          >
            {pedals.length === 0 && <span className="no-pedals">No Pedals</span>}
             {pedals.map((p, index) => {
               return (

@@ -6,32 +6,20 @@ import Pedal from "../Pedal/Pedal"
 
 
 export default function Board({
-    handleOnDragEnd,
     boardSpot,
-    setBoardSpot,
     deletePedal,
     user,
-    activePedal,
     updatePedal,
     pedalToUpdate,
-    pedalsList,
     setPedalForm,
     handleUpload,
     photos,
     setPhotos,
     setEditData,
-    handleSelectDiv,
-    pedal,
     pedalForm,
-    isSelected, 
     handleSelectPedal, 
     setPedalToUpdate, 
-    index,
-    id,
-    p,
 }) {
-
-
 
     return (
         <div className="board">
@@ -39,6 +27,7 @@ export default function Board({
                 <Droppable droppableId={`${index}`} key={index}>
                     {(provided) => (
                         <div
+                        style={{ backgroundImage: `url(Photos/Velcro.png)` }}
                             value={index}
                             {...provided.droppableProps} ref={provided.innerRef}
                             className={`boardItem${index}`}>

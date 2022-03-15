@@ -2,16 +2,43 @@
     background-color: grey;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 4fr 5fr;
+    grid-template-rows: 1fr 2fr 2fr;
     grid-column-start: 1;
     grid-column-end: 5;
+}
+
+.forms {
+    grid-column-start: 2;
+    grid-column-end: 4; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boardPage button, input, select {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: small;
+    width: auto;
+    height: 50px;
+  
 }
 .saveBoardBtn {
     height: 70px;
 }
 
 .saveBoardBtn:hover {
-    background-color: gold;
+    background-color: rgb(178, 58, 134);
+}
+.clearBoardBtn:hover {
+    background-color: transparent;
+}
+.deleteBoardBtn:hover {
+    background-color: rgb(220, 69, 64);
+}
+.chooseBoardBtn:hover {
+    background-color: rgb(55, 125, 190);
 }
 
 .saveButtonDiv {

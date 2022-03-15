@@ -76,7 +76,9 @@ export default function App() {
 
 
   return (
-    <main className="App">
+    <main className="App"
+    style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
+    >
       { user ? 
       <>
         <NavBar user={user} setUser={setUser}/>

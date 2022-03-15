@@ -4,11 +4,10 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: solid 1px black;
-    border-radius: 10px;
-    width: 250px;
-    height: 100%;
-    margin-bottom: 20px;
+    border: solid .1vmin black;
+    border-radius: 1vmin;
+    width: 25vmin;
+    height: 40vmin;
 }
 .newPedalForm form {
     display: flex;
@@ -16,19 +15,20 @@
     align-items: center;
     justify-content: center;
     width: 20vmin;
-    margin: 10px;
-    padding: 10px;
 }
 
-.newPedalForm input, .submitButton {
-    width: 150px;
-    font-size: 10px;
+.newPedalForm input, .submitButton, .chooseFileButton, select {
+    width: 15vmin;
+    font-size: 1vmin;
+    height: 2vmin;
 }
 button:hover {
     background-color: rgb(99, 179, 90);
 }
 
 .logo2 {
-    height: 150px;
+    height: 12vmin;
 }
-
+h3 {
+    font-size: 1.8vmin;
+}

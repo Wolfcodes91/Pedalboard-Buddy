@@ -36,7 +36,7 @@ export default function Pedal({
         >
             <div className="pedalInfoBox">
                 {/* <p>{p.brand}</p> */}
-                <p>{p.name}</p>
+                {/* <p>{p.name}</p> */}
             </div>
             {user._id === p.user &&
                 <div className="pedalButtonBox">

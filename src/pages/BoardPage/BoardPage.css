@@ -2,7 +2,7 @@
     background-color: grey;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-rows: 1fr 3fr 4fr;
     grid-column-start: 1;
     grid-column-end: 5;
 }
@@ -14,14 +14,15 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 10vmin;
 }
 
 .boardPage button, input, select {
     grid-column-start: 1;
     grid-column-end: 4;
-    font-size: small;
+    font-size: 1vmin;
     width: auto;
-    height: 50px;
+    height: 3vmin;
   
 }
 .saveBoardBtn {

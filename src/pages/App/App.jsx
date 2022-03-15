@@ -63,9 +63,9 @@ export default function App() {
     setPedalsList(updatedPedal)
   }
 
-  async function updateBoard(editData, id) {
+  async function updateBoard(editData) {
     console.log(editData, 'function')
-    const boardToUpdate = await boardsAPI.updateABoard(editData, id)
+    const boardToUpdate = await boardsAPI.updateABoard(editData)
     const updatedBoard = userBoards.map(b => b._id === boardToUpdate._id ? boardToUpdate : b)
     setUpdatedBoard(updatedBoard)
   }

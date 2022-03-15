@@ -25,7 +25,7 @@ async function deleteBoard(req, res) {
 }
 
 async function update(req, res) {
-    console.log('im in the server, dawg', req.body)
-    // const board = await Board.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    // res.json(board)
+    const board = await Board.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    console.log('im in the server, dawg', board)
+    res.json(board)
   }

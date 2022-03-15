@@ -13,7 +13,7 @@ export function newPedalboardCreate(form) {
   export function deleteABoard(id) {
     return sendRequest(`${BASE_URL}/${id}`, 'DELETE', {id})
   }
-  export function updateABoard(editData, id) {
+  export function updateABoard(editData) {
     console.log(editData, '1')
-    return sendRequest(`${BASE_URL}/${id}`, 'PUT', editData, true)
+    return sendRequest(`${BASE_URL}/${editData._id}`, 'PUT', editData)
   }

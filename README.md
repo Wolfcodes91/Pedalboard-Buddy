@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Pedalboard Buddy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Getting Started:
+## [Pedalboard Buddy](http://pedalboard-buddy.herokuapp.com/)
+## [Pedalboard Buddy Trello](https://trello.com/b/WPwTUBeL/pedalboard-buddy)
 
-## Available Scripts
+### Info
+Pedalboard Buddy is an app for musicians who use effect pedals. In this app, you can add/edit/delete and view your own list of pedals, as well as being able to view and use the pedals that other users have entered in to the database.
+Create your own pedalboards by clicking and dragging pedals from the list to the board. You can move the positions of pedals and save your changes. Save as many boards as you wish! Happy pedalboard building from your Pedalboard Buddy!
 
-In the project directory, you can run:
+### Directions
 
-### `npm start`
+Add a pedal to the list by entering the brand, name, size, and a picture in to the pedal adding form. If you make a mistake entering your pedal info, or don't like the picture you chose, you may edit your pedal and change any of the info, as well as add a new pic.  
+Drag your pedals to the pedalboard, move them around to your liking then Name your board and click save!
+You may recall your past saved boards and edit them and resave them. If you don't like your saved board anymore you may delete it. At any time the "clear" button will move all the pedals on the board back to the Pedals List. Thats all there is to it!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ ![Home Page](https://i.imgur.com/SfMLU6j.png)
+ ![Board Page](https://i.imgur.com/5mQKg7w.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Technologies used:
+    * mongo db
+    * express
+    * react
+    * node 
+    * html
+    * css
+    * javascript
+    * amazon web services 
+    * react-beautiful-dnd
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Icebox Items: 
+    * Change the visual sizing of pedals to reflect their proportional "real life" sizing. 
+    * Review and comment on other users boards.
+    * Show cabling.
+    * Create boards of many different sizes.
+    * Smoother user interface. 
+    * Export the pedal list as a JSON API for other developers to use.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

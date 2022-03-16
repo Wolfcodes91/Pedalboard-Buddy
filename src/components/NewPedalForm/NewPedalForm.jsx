@@ -110,7 +110,7 @@ export default function NewPedalForm({
                 <option value="wah/volume">Wah/Volume</option>
             </select>
             <input className="chooseFileButton" name="photo" ref={fileChangeRef} type="file" />
-            <button className="submitButton" type="submit">Save Pedal Changes</button>
+            <button className="submitButton" type="submit">Save Changes</button>
         </form>
         </div>
       }

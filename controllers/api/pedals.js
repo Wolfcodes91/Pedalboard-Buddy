@@ -10,7 +10,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const pedals = await Pedal.find({}).sort('name')
+  const pedals = await Pedal.find({}).sort('brand')
   res.json(pedals);
 }
 

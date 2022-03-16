@@ -5,7 +5,7 @@
 ## [Pedalboard Buddy Trello](https://trello.com/b/WPwTUBeL/pedalboard-buddy)
 
 ### Info
-Pedalboard Buddy is an app for musicians who use effect pedals. In this app, you can add/edit/delete and view your own list of pedals, as well as being able to view and use the pedals that other users have entered in to the database.
+Pedalboard Buddy is an app for musicians who use effect pedals. In this app, you can add/edit/delete and view your own list of pedals, as well as view and use the pedals that other users have entered in to the database.
 Create your own pedalboards by clicking and dragging pedals from the list to the board. You can move the positions of pedals and save your changes. Save as many boards as you wish! Happy pedalboard building from your Pedalboard Buddy!
 
 ### Directions

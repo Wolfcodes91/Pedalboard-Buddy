@@ -1,6 +1,6 @@
 .board {
     background-color: black;
-    height: 41vmin;
+    height: 37vmin;
     border: solid 0.5vmin black;
     border-radius: 1vmin;
     color: transparent;
@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     border: solid 0.3vmin grey;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     background-color: black;
     grid-row-start: 1;
@@ -40,7 +40,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
@@ -53,7 +53,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
@@ -66,7 +66,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 1;
     grid-row-end: 2;
@@ -79,7 +79,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -92,7 +92,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -105,7 +105,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 2;
     grid-row-end: 3;
@@ -118,7 +118,7 @@
     align-items: center;
     border: solid 0.3vmin grey;
     background-color: black;
-    height: 20vmin;
+    height: 18vmin;
     width: auto;
     grid-row-start: 2;
     grid-row-end: 3;

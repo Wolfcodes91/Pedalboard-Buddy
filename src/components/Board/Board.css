@@ -12,11 +12,13 @@
     grid-column-start: 1;
     grid-column-end: 5;
 }
+
 .board button {
     background-color: transparent;
     border-color: transparent;
     color: transparent;
 }
+
 .board button:hover {
     background-color: transparent;
 }

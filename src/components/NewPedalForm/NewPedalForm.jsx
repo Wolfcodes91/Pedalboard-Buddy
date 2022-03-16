@@ -25,7 +25,6 @@ export default function NewPedalForm({
     const fileChangeRef = useRef();
     
     function handleAddNewPedal(evt) {
-      console.log(user)
       evt.preventDefault()
       const form = new FormData();
       form.append('photo', fileInputRef.current.files[0]);
@@ -41,7 +40,6 @@ export default function NewPedalForm({
 
     function handleUpdatePedal(evt) {
       evt.preventDefault()
-      console.log(editData)
       const form = new FormData();
       if (fileChangeRef.current.files.length) form.append('photo', fileChangeRef.current.files[0]);
       form.append('brand', editData.brand);
@@ -62,18 +60,19 @@ export default function NewPedalForm({
     }
 
     return (
-        <>
+      <>
         { pedalForm ?
         <div className="newPedalForm">
-        <h3>Add a Pedal</h3>
-        <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-2.svg"></object>
-        <form onSubmit={handleAddNewPedal}>
+          <h3>Add a Pedal</h3>
+          <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-2.svg"></object>
+          <form onSubmit={handleAddNewPedal}
+          >
             <input 
-            name="brand"
-            type="text" 
-            placeholder="Brand" 
-            value={formData.brand} 
-            onChange={handleChange}
+              name="brand"
+              type="text" 
+              placeholder="Brand" 
+              value={formData.brand} 
+              onChange={handleChange}
             />
             <br />
             <input name="name" type="text" placeholder="Name" value={formData.name} onChange={handleChange}/>
@@ -86,34 +85,34 @@ export default function NewPedalForm({
             </select>
             <input className="chooseFileButton" type="file" ref={fileInputRef} />
             <button className="submitButton" type="submit">Add New Pedal</button>
-        </form>
+          </form>
         </div>
         :
         <div  className="newPedalForm">
-        <h3>Edit a Pedal</h3>
-        <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-4.svg"></object>
-        <form onSubmit={handleUpdatePedal}>
-            <input 
-            name="brand"
-            type="text" 
-            placeholder={pedalToUpdate ? pedalToUpdate.brand : "Brand"} 
-            value={editData.brand} 
-            onChange={handleEdit}
-            />
-            <br />
-            <input name="name" type="text" placeholder="Name" value={editData.name} onChange={handleEdit}/>
-            <br />
-            <select name="size" value={editData.size} onChange={(evt)=>handleEdit(evt)}>
-                <option value="mini">Mini</option>
-                <option value="regular">Regular</option>
-                <option value="doublewide">Double Wide</option>
-                <option value="wah/volume">Wah/Volume</option>
-            </select>
-            <input className="chooseFileButton" name="photo" ref={fileChangeRef} type="file" />
-            <button className="submitButton" type="submit">Save Changes</button>
-        </form>
+          <h3>Edit a Pedal</h3>
+          <object className="logo2" type="image/svg+xml" data="Photos/pedalboard-buddy-4.svg"></object>
+          <form onSubmit={handleUpdatePedal}>
+              <input 
+                name="brand"
+                type="text" 
+                placeholder={pedalToUpdate ? pedalToUpdate.brand : "Brand"} 
+                value={editData.brand} 
+                onChange={handleEdit}
+              />
+              <br />
+              <input name="name" type="text" placeholder="Name" value={editData.name} onChange={handleEdit}/>
+              <br />
+              <select name="size" value={editData.size} onChange={(evt)=>handleEdit(evt)}>
+                  <option value="mini">Mini</option>
+                  <option value="regular">Regular</option>
+                  <option value="doublewide">Double Wide</option>
+                  <option value="wah/volume">Wah/Volume</option>
+              </select>
+              <input className="chooseFileButton" name="photo" ref={fileChangeRef} type="file" />
+              <button className="submitButton" type="submit">Save Changes</button>
+          </form>
         </div>
       }
-    </>
+      </>
     )
 }

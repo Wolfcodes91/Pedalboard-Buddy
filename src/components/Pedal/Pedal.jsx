@@ -6,12 +6,9 @@ export default function Pedal({
     isSelected,
     handleSelectPedal,
     deletePedal,
-    activePedal,
     setPedalToUpdate,
     setPedalForm,
     setEditData,
-    index,
-    id,
     user,
     // setEditData
 }) {

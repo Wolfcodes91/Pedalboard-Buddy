@@ -13,10 +13,10 @@ async function index(req, res) {
     res.json(boards);
   }
 
-  async function create(req, res) {
-      const board = await Board.create(req.body)
-      console.log('I am the server', board)
-      res.json(board)
+async function create(req, res) {
+    const board = await Board.create(req.body)
+    console.log('I am the server', board)
+    res.json(board)
 }
 
 async function deleteBoard(req, res) {

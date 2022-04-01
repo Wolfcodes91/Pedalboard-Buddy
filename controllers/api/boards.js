@@ -9,6 +9,9 @@ module.exports = {
 
 
 async function index(req, res) {
+    if (!req || !req.user) {
+      return res.json({error: "no user"})
+    }
     const boards = await Board.find({user: req.user._id}).sort('name')
     res.json(boards);
   }

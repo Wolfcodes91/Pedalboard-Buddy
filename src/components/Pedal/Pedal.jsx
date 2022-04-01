@@ -35,7 +35,7 @@ export default function Pedal({
                 {/* <p>{p.brand}</p> */}
                 {/* <p>{p.name}</p> */}
             </div>
-            {user._id === p.user &&
+            {user && user._id === p.user &&
                 <div className="pedalButtonBox">
                     <button className="updateButton" onClick={() => handleUpdatePedalForm(p)}>Edit</button>
                     <button className="dltButton" onClick={() => handleDeletePedal(p._id)}>Delete</button>

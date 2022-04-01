@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from "react" 
 import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
+import { ChakraProvider } from '@chakra-ui/react'
 import * as pedalsAPI from "../../utilities/pedals-api" 
 import * as boardsAPI from "../../utilities/boards-api" 
 import AuthPage from "../AuthPage/AuthPage";
@@ -29,8 +30,6 @@ export default function App() {
     {number: '7'},
   ])
   const pedals = pedalsList.filter(pedal => !boardSpot.some(p => p._id === pedal._id));
-
-
 
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
@@ -76,10 +75,10 @@ export default function App() {
 
 
   return (
+    <ChakraProvider>
     <main className="App"
     style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
     >
-      { user ? 
       <>
         <NavBar user={user} setUser={setUser}/>
       <Routes>
@@ -100,6 +99,7 @@ export default function App() {
         setBoardSpot={setBoardSpot}
         createPedalboard={createPedalboard}
         user={user}
+        setUser={setUser}
         userBoards={userBoards}
         setUserBoards={setUserBoards}
         selectedBoard={selectedBoard}
@@ -113,15 +113,10 @@ export default function App() {
         />
       </Routes>
       </>
-        :
-        <AuthPage 
-        setUser={setUser}
-        boardSpot={boardSpot}
-        setBoardSpot={setBoardSpot}
-         /> 
-      }
+   
       
     </main>
+    </ChakraProvider>
   );
 }
 

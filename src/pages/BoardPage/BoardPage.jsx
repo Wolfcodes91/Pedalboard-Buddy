@@ -1,10 +1,12 @@
 import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
 import Board from "../../components/Board/Board"
+import LoginModal from "../../components/LoginModal/LoginModal"
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useEffect } from "react"
 import * as pedalsAPI from "../../utilities/pedals-api"
 import * as boardsAPI from "../../utilities/boards-api"
+
 
 export default function BoardPage({
     setActivePedal,
@@ -23,6 +25,7 @@ export default function BoardPage({
     handleSelectDiv,
     createPedalboard,
     user,
+    setUser,
     userBoards,
     pedals,
     deleteBoard,
@@ -44,15 +47,18 @@ export default function BoardPage({
             setActivePedal(pedals[0] || null);
         }
         getPedals();
-    }, [setActivePedal, setPedalsList])
+    }, [])
 
     useEffect(function () {
+        if (!user) {
+            return
+        }
         async function getBoards() {
             const boards = await boardsAPI.getAll();
             setUserBoards(boards)
         }
         getBoards()
-    }, [setUserBoards])
+    }, [user])
 
     useEffect(function () {
         setChosenBoard(null)
@@ -164,6 +170,8 @@ export default function BoardPage({
         setChosenBoard(null)
     }
 
+  
+
     return (
         <div className="boardPage"
             style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
@@ -172,7 +180,8 @@ export default function BoardPage({
                 <form className="form1" onSubmit={chooseBoard}>
                     <span>
                         <select onChangeCapture={handleUserBoardChange}>
-                            {userBoards.map(option => {
+                            
+                            {Array.isArray(userBoards) && userBoards.map(option => {
                                 return <option
                                     value={option._id}
                                     key={option._id}
@@ -185,6 +194,7 @@ export default function BoardPage({
                     </span>
                 </form>
 
+                <button onClick={() => setUser(1)}>LogIN</button>
 
                 <form className="form2" onSubmit={handleClearBoard}>
                     <span>
@@ -223,6 +233,15 @@ export default function BoardPage({
                     </div>
                 }
             </div>
+            
+            
+            <LoginModal 
+                user={user}
+                setUser={setUser}
+                boardSpot={boardSpot}
+                setBoardSpot={setBoardSpot}
+            />
+
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board
                     boardSpot={boardSpot}

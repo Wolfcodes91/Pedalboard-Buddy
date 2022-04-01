@@ -1,10 +1,11 @@
 import './App.css';
-import { useState } from "react" 
+import { useState, useRef } from "react" 
 import { Route, Routes } from 'react-router-dom'
 import { getUser } from '../../utilities/users-service'
 import { ChakraProvider } from '@chakra-ui/react'
 import * as pedalsAPI from "../../utilities/pedals-api" 
 import * as boardsAPI from "../../utilities/boards-api" 
+import { useDisclosure } from '@chakra-ui/react'
 import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import BoardPage from "../BoardPage/BoardPage";
@@ -19,6 +20,8 @@ export default function App() {
   const [updatedBoard, setUpdatedBoard] = useState()
   const [photos, setPhotos] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(null)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = useRef()
   const [boardSpot, setBoardSpot] = useState([
     {number: '0'},
     {number: '1'},
@@ -80,7 +83,14 @@ export default function App() {
     style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
     >
       <>
-        <NavBar user={user} setUser={setUser}/>
+        <NavBar 
+          user={user} 
+          setUser={setUser}
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+          cancelRef={cancelRef}
+          />
       <Routes>
         <Route 
         path="/" 
@@ -109,6 +119,10 @@ export default function App() {
         chosenBoard={chosenBoard}
         setChosenBoard={setChosenBoard}
         updateBoard={updateBoard}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        cancelRef={cancelRef}
         />} 
         />
       </Routes>

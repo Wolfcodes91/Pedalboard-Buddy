@@ -31,7 +31,11 @@ export default function BoardPage({
     deleteBoard,
     chosenBoard,
     setChosenBoard,
-    updateBoard
+    updateBoard,
+    isOpen,
+    onOpen,
+    onClose, 
+    cancelRef
 }) {
     let boardToFind = '';
     const [boardData, setBoardData] = useState()
@@ -170,8 +174,6 @@ export default function BoardPage({
         setChosenBoard(null)
     }
 
-  
-
     return (
         <div className="boardPage"
             style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
@@ -193,8 +195,6 @@ export default function BoardPage({
                         <button className="chooseBoardBtn" type="submit">Choose Board</button>
                     </span>
                 </form>
-
-                <button onClick={() => setUser(1)}>LogIN</button>
 
                 <form className="form2" onSubmit={handleClearBoard}>
                     <span>
@@ -234,13 +234,17 @@ export default function BoardPage({
                 }
             </div>
             
-            
+        
             <LoginModal 
                 user={user}
                 setUser={setUser}
                 boardSpot={boardSpot}
                 setBoardSpot={setBoardSpot}
+                isOpen={isOpen}
+                canelRef={cancelRef}
+                onClose={onClose}
             />
+          
 
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board

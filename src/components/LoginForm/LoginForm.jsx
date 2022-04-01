@@ -3,7 +3,7 @@ import * as usersService from '../../utilities/users-service';
 import "./LoginForm.css"
 
 
-export default function LoginForm({ setUser, handleClearBoard2 }) {
+export default function LoginForm({ setUser, handleClearBoard2, onClose }) {
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -18,7 +18,8 @@ export default function LoginForm({ setUser, handleClearBoard2 }) {
   async function handleSubmit(evt) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
-    // handleClearBoard2(evt)
+    handleClearBoard2(evt)
+    onClose()
     try {
       // The promise returned by the signUp service method 
       // will resolve to the user object included in the

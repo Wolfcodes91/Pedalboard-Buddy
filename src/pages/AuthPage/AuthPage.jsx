@@ -3,7 +3,7 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import "./AuthPage.css"
 
-export default function AuthPage({ setUser, boardSpot, setBoardSpot }) {
+export default function AuthPage({ setUser, boardSpot, setBoardSpot, onClose }) {
   const [showLogin, setShowLogin] = useState(true);
 
   function handleClearBoard2(evt) {
@@ -50,10 +50,12 @@ export default function AuthPage({ setUser, boardSpot, setBoardSpot }) {
         <LoginForm 
         setUser={setUser} 
         handleClearBoard2={handleClearBoard2}
+        onClose={onClose}
         />
         :
         <SignUpForm setUser={setUser} 
         handleClearBoard2={handleClearBoard2}
+        onClose={onClose}
         />
       }
       </div>

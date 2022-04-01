@@ -1,16 +1,17 @@
+import { isDOMComponent } from "react-dom/test-utils";
 import { Link } from "react-router-dom"
 import * as userService from '../../utilities/users-service';
 import "./NavBar.css"
 
 
-export default function NavBar({ user, setUser}) {
+export default function NavBar({ user, setUser, isOpen, onOpen, onClose, cancelRef}) {
     function handleLogOut() {
         userService.logOut();
         setUser(null);
     }
 
     function handleLogIn() {
-        
+        onOpen()
     }
 
     return (

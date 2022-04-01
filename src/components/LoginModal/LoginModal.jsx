@@ -8,12 +8,13 @@ import {
     AlertDialogOverlay,
   } from '@chakra-ui/react'
 
-export default function LoginModal(user, setUser, boardSpot, setBoardSpot) {
-    return(
+export default function LoginModal({user, setUser, boardSpot, setBoardSpot, isOpen, onOpen, onClose, cancelRef}) {
+    
+    return(        
 <AlertDialog
-isOpen={false}
-leastDestructiveRef={'Ref'}
-onClose={() => console.log('hi')}
+isOpen={isOpen}
+leastDestructiveRef={cancelRef}
+onClose={onClose}
 >
 <AlertDialogOverlay>
   <AlertDialogContent>
@@ -27,16 +28,15 @@ onClose={() => console.log('hi')}
         setUser={setUser}
         boardSpot={boardSpot}
         setBoardSpot={setBoardSpot}
+        onClose={onClose}
         /> 
+        <button onClick={onClose}>X</button>
     </AlertDialogBody>
 
     <AlertDialogFooter>
-      {/* <Button ref={cancelRef} onClick={onClose}>
+      <button ref={cancelRef} onClick={onClose}>
         Cancel
-      </Button>
-      <Button colorScheme='red' onClick={onClose} ml={3}>
-        Delete
-      </Button> */}
+      </button>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialogOverlay>

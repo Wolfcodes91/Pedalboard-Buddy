@@ -8,7 +8,7 @@
     border-radius: 1vmin;
     width: 25vmin;
     padding: 5vmin;
-    height: 48vmin;
+    /* height: 48vmin; */
 }
 .newPedalForm form {
     display: flex;

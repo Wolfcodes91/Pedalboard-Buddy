@@ -1,13 +1,10 @@
 main {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    /* align-items: flex-start; */
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 5;
-
 }
 
 .logIn {
@@ -37,8 +34,9 @@ main {
 }
 
 .blurb {
+    text-align: center;
     font-size: 1.5vmin;
-    /* color: white; */
+    padding: 1vmin;
     border-radius: 3vmin;
     border: solid 0.2vmin black;
 }

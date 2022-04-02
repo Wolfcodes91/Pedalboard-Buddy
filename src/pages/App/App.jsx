@@ -6,7 +6,6 @@ import { ChakraProvider } from '@chakra-ui/react'
 import * as pedalsAPI from "../../utilities/pedals-api" 
 import * as boardsAPI from "../../utilities/boards-api" 
 import { useDisclosure } from '@chakra-ui/react'
-import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import BoardPage from "../BoardPage/BoardPage";
 
@@ -16,7 +15,7 @@ export default function App() {
   const [pedalsList, setPedalsList] = useState([])
   const [activePedal, setActivePedal] = useState(null);
   const [selectedBoard, setSelectedBoard] = useState(null)
-  const [updatedPedal, setUpdatedPedal] = useState()
+  // const [updatedPedal, setUpdatedPedal] = useState()
   const [updatedBoard, setUpdatedBoard] = useState()
   const [photos, setPhotos] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(null)
@@ -61,7 +60,6 @@ export default function App() {
   async function updatePedal(editData, id) {
     const pedalToUpdate = await pedalsAPI.updateAPedal(editData, id)
     const updatedPedal = pedalsList.map(p => p._id === pedalToUpdate._id ? pedalToUpdate : p)
-    // setUpdatedPedal(pedalToUpdate)
     setPedalsList(updatedPedal)
   }
 
@@ -83,15 +81,15 @@ export default function App() {
     style={{ backgroundImage: `url(Photos/Floor.jpeg)` }}
     >
       <>
-        <NavBar 
-          user={user} 
-          setUser={setUser}
-          isOpen={isOpen}
-          onOpen={onOpen}
-          onClose={onClose}
-          cancelRef={cancelRef}
-          setUserBoards={setUserBoards}
-          />
+      <NavBar 
+        user={user} 
+        setUser={setUser}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        cancelRef={cancelRef}
+        setUserBoards={setUserBoards}
+      />
       <Routes>
         <Route 
         path="/" 
@@ -127,9 +125,7 @@ export default function App() {
         />} 
         />
       </Routes>
-      </>
-   
-      
+      </> 
     </main>
     </ChakraProvider>
   );

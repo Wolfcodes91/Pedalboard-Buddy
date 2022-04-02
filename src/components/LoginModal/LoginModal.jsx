@@ -10,7 +10,7 @@ import {
 
 export default function LoginModal({user, setUser, boardSpot, setBoardSpot, isOpen, onOpen, onClose, cancelRef}) {
     
-    return(        
+    return(  
 <AlertDialog
 isOpen={isOpen}
 leastDestructiveRef={cancelRef}

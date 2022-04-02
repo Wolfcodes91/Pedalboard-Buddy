@@ -6,6 +6,8 @@ import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useEffect } from "react"
 import * as pedalsAPI from "../../utilities/pedals-api"
 import * as boardsAPI from "../../utilities/boards-api"
+// import BoardSaved from "../../components/BoardSaved/BoardSaved"
+// import { useToast } from '@chakra-ui/react'
 
 
 export default function BoardPage({
@@ -38,12 +40,13 @@ export default function BoardPage({
     cancelRef
 }) {
     let boardToFind = '';
-    const [boardData, setBoardData] = useState()
+    // const toast = useToast()
+    // const [boardData, setBoardData] = useState()
     const [boardFormData, setBoardFormData] = useState({
         name: "",
     })
     const [count, setCount] = useState(0)
-
+   
     useEffect(function () {
         async function getPedals() {
             const pedals = await pedalsAPI.getAll();
@@ -51,7 +54,7 @@ export default function BoardPage({
             setActivePedal(pedals[0] || null);
         }
         getPedals();
-    }, [])
+    }, [setActivePedal, setPedalsList])
 
     useEffect(function () {
         if (!user) {
@@ -62,13 +65,11 @@ export default function BoardPage({
             setUserBoards(boards)
         }
         getBoards()
-    }, [user])
+    }, [user, setUserBoards])
 
     useEffect(function () {
         setChosenBoard(null)
     }, [setChosenBoard, userBoards])
-
-
 
     function handleOnDragEnd(result) {
         if (!result.destination) return;
@@ -140,7 +141,7 @@ export default function BoardPage({
     }
 
     function chooseBoard(evt) {
-        evt.preventDefault()
+        console.log('Choosing board')
         if (boardToFind === '' || boardToFind === undefined) {
             if (userBoards[0] === null) return
             else boardToFind = userBoards[0]
@@ -151,6 +152,7 @@ export default function BoardPage({
 
     function handleUserBoardChange(evt) {
         boardToFind = userBoards[evt.target.options.selectedIndex]
+        chooseBoard()
     }
     function handleDeleteBoard(evt) {
         evt.preventDefault()
@@ -198,8 +200,6 @@ export default function BoardPage({
                                     {option.name}</option>;
                             })}
                         </select>
-
-                        <button className="chooseBoardBtn" type="submit">Choose Board</button>
                     </span>
                 </form>
 
@@ -251,7 +251,10 @@ export default function BoardPage({
                 canelRef={cancelRef}
                 onClose={onClose}
             />
-          
+
+            {/* <BoardSaved 
+                toast={toast}
+            /> */}
 
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board

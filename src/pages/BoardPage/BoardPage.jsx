@@ -116,6 +116,12 @@ export default function BoardPage({
     }
 
     function handleSavePedalboard(evt) {
+        if (!user) {
+            onOpen()
+            evt.preventDefault()
+            return 
+        }
+        if (user) {
         evt.preventDefault()
         console.log(boardFormData, boardSpot)
         const form = {
@@ -126,6 +132,7 @@ export default function BoardPage({
         createPedalboard(form)
         console.log('GOOD MORNING', form)
         setBoardFormData({ name: "" });
+        }
     }
 
     function handleBoardChange(evt) {
@@ -268,6 +275,7 @@ export default function BoardPage({
                     photos={photos}
                     setPhotos={setPhotos}
                     user={user}
+                    onOpen={onOpen}
                 />
             </DragDropContext>
         </div>

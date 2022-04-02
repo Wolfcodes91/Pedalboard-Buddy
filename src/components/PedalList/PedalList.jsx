@@ -14,7 +14,8 @@ export default function PedalList({
   handleUpload,
   photos,
   setPhotos,
-  pedals
+  pedals,
+  onOpen
 }) {
   const [editData, setEditData] = useState({
     brand: "",
@@ -40,6 +41,7 @@ export default function PedalList({
         setEditData={setEditData}
         editData={editData}
         user={user}
+        onOpen={onOpen}
       />
       <Droppable droppableId="pedalsList">
         {(provided) => (

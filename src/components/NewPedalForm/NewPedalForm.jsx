@@ -9,7 +9,8 @@ export default function NewPedalForm({
      updatePedal,
      editData,
      setEditData,
-     user
+     user,
+     onOpen
     }) {
    
     const [formData, setFormData] = useState({
@@ -25,17 +26,23 @@ export default function NewPedalForm({
     const fileChangeRef = useRef();
     
     function handleAddNewPedal(evt) {
-      evt.preventDefault()
-      const form = new FormData();
-      form.append('photo', fileInputRef.current.files[0]);
-      form.append('brand', formData.brand);
-      form.append('name', formData.name);
-      form.append('size', formData.size);
-      form.append('user', user._id)
-      createPedal(form)
-      setFormData({ brand: "", name: "", size: "regular"});
-      fileInputRef.current.value = '';
-      console.log('handleAdd')
+      if (user) {
+        evt.preventDefault()
+        const form = new FormData();
+        form.append('photo', fileInputRef.current.files[0]);
+        form.append('brand', formData.brand);
+        form.append('name', formData.name);
+        form.append('size', formData.size);
+        form.append('user', user._id)
+        createPedal(form)
+        setFormData({ brand: "", name: "", size: "regular"});
+        fileInputRef.current.value = '';
+        console.log('handleAdd')
+        }
+      if (!user) {
+        onOpen() 
+        evt.preventDefault()
+        }
       }
 
     function handleUpdatePedal(evt) {

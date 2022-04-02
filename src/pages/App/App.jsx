@@ -90,6 +90,7 @@ export default function App() {
           onOpen={onOpen}
           onClose={onClose}
           cancelRef={cancelRef}
+          setUserBoards={setUserBoards}
           />
       <Routes>
         <Route 

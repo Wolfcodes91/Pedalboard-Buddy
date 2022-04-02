@@ -30,13 +30,10 @@ onClose={onClose}
         setBoardSpot={setBoardSpot}
         onClose={onClose}
         /> 
-        <button onClick={onClose}>X</button>
     </AlertDialogBody>
 
     <AlertDialogFooter>
-      <button ref={cancelRef} onClick={onClose}>
-        Cancel
-      </button>
+    <button onClick={onClose}>X</button>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialogOverlay>

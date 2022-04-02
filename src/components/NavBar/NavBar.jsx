@@ -4,10 +4,11 @@ import * as userService from '../../utilities/users-service';
 import "./NavBar.css"
 
 
-export default function NavBar({ user, setUser, isOpen, onOpen, onClose, cancelRef}) {
+export default function NavBar({ user, setUser, isOpen, onOpen, onClose, cancelRef, setUserBoards}) {
     function handleLogOut() {
         userService.logOut();
         setUser(null);
+        setUserBoards(null)
     }
 
     function handleLogIn() {

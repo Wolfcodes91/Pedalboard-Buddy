@@ -32,11 +32,11 @@ onClose={onClose}
         /> 
     </AlertDialogBody>
 
-    <AlertDialogFooter>
     <div className="cancelLogin">
+    <AlertDialogFooter>
     <button className="cancelButton" onClick={onClose}>Cancel</button>
-    </div>
     </AlertDialogFooter>
+    </div>
   </AlertDialogContent>
 </AlertDialogOverlay>
 </AlertDialog>

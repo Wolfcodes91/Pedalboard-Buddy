@@ -18,6 +18,8 @@ form {
     width: 30vmin;
     font-size: 2vmin;
     padding: 2vmin;
+    background-color: lightgray;
+    color: black;
 }
 
 .loginButton:hover {

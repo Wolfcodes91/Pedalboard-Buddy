@@ -1,5 +1,5 @@
 .boardPage {
-    /* height: 120vmin; */
+    width: 100%;
     background-color: grey;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

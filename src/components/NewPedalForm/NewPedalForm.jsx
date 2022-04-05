@@ -1,5 +1,6 @@
 import "./NewPedalForm.css"
 import { useState, useRef } from "react";
+import { useToast } from '@chakra-ui/react'
 
 export default function NewPedalForm({ 
     createPedal,
@@ -12,7 +13,10 @@ export default function NewPedalForm({
      user,
      onOpen
     }) {
-   
+
+    const toast = useToast()
+    let id = 'test-toast'
+
     const [formData, setFormData] = useState({
         brand: "",
         name: "",
@@ -24,11 +28,13 @@ export default function NewPedalForm({
     // inputRef.current will be the <input> DOM element
     const fileInputRef = useRef();
     const fileChangeRef = useRef();
-    
+    const [photoCheck, setPhotoCheck] = useState(false)
+   
     function handleAddNewPedal(evt) {
       if (user) {
         evt.preventDefault()
         const form = new FormData();
+        console.log('weehoo', fileInputRef.current.files[0])
         form.append('photo', fileInputRef.current.files[0]);
         form.append('brand', formData.brand);
         form.append('name', formData.name);
@@ -38,6 +44,16 @@ export default function NewPedalForm({
         setFormData({ brand: "", name: "", size: "regular"});
         fileInputRef.current.value = '';
         console.log('handleAdd')
+        toast(
+          {
+              id,
+              title: 'Pedal Saved.',
+              description: "Your Pedal has been successfully saved",
+              status: 'success',
+              duration: 5000,
+              isClosable: true,
+              },  
+      )
         }
       if (!user) {
         onOpen() 
@@ -57,6 +73,28 @@ export default function NewPedalForm({
       updatePedal(form, pedalToUpdate._id)
       setEditData({ brand: "", name: "", size: "regular"});
       fileChangeRef.current.value = null
+      toast(
+        {
+            id,
+            title: 'Pedal Updated.',
+            description: "Your Pedalboard has been successfully updated",
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+            },  
+    )
+    }
+
+    function changePhotoForm() {
+      toast(
+        {
+            title: 'Photo Added.',
+            description: "Your Photo has been added",
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+            },  
+    )
     }
 
     function handleChange(evt) {
@@ -84,13 +122,26 @@ export default function NewPedalForm({
             <br />
             <input name="name" type="text" placeholder="Name" value={formData.name} onChange={handleChange}/>
             <br />
-            <select name="size" value={formData.size} onChange={(evt)=>handleChange(evt)}>
+            <select className="sizeSelect" name="size" value={formData.size} onChange={(evt)=>handleChange(evt)}>
                 <option value="mini">Mini</option>
                 <option value="regular">Regular</option>
                 <option value="doublewide">Double Wide</option>
                 <option value="wah/volume">Wah/Volume</option>
             </select>
-            <input className="chooseFileButton" type="file" ref={fileInputRef} />
+            {/* { photoCheck === false ? */}
+            <div id="fakeButton">
+            <p>Add a Photo</p>
+            <img src="Photos/CAMERA.webp" alt="" />
+            <input 
+              className="chooseFileButton" 
+              type="file" 
+              ref={fileInputRef}
+              onChange={changePhotoForm}
+              />
+              </div>
+            {/* :
+            <p>Photo Added</p> 
+            } */}
             <button className="submitButton" type="submit">Add New Pedal</button>
           </form>
         </div>
@@ -115,7 +166,17 @@ export default function NewPedalForm({
                   <option value="doublewide">Double Wide</option>
                   <option value="wah/volume">Wah/Volume</option>
               </select>
-              <input className="chooseFileButton" name="photo" ref={fileChangeRef} type="file" />
+
+              <div id="fakeButton">
+            <p>Add a Photo</p>
+            <img src="Photos/CAMERA.webp" alt="" />
+            <input 
+              className="chooseFileButton" 
+              type="file" 
+              ref={fileChangeRef}
+              onChange={changePhotoForm}
+              />
+              </div>
               <button className="submitButton" type="submit">Save Changes</button>
           </form>
         </div>

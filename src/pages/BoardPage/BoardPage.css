@@ -15,25 +15,45 @@
     grid-row-end: 2;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 3vmin;
+    font-size: 1.5vmin;
+    flex-wrap: wrap;
+}
+
+.form5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .boardPage button, input, select {
     grid-column-start: 1;
     grid-column-end: 4;
-    font-size: 1.5vmin;
-    height: 6vmin;
+    font-size: 2vmin;
+    height: 8vmin;
     border-radius: 1vmin;
+    padding: 0.2vmin;
+    border: solid 0.1vmin black;
 }
-.saveBoardBtn {
-    height: 70px;
+
+.forms input, .select {
+    width: 25vmin;
+}
+
+.forms button {
+    width: 15vmin;
 }
 
 .saveBoardBtn:hover {
     background-color: rgb(178, 58, 134);
 }
+
+.clearBoardBtn, .saveBoardBtn, .deleteBoardBtn {
+    background-color: lightgray;
+}
+
 .clearBoardBtn:hover {
     background-color: transparent;
 }
@@ -44,9 +64,3 @@
     background-color: rgb(55, 125, 190);
 }
 
-.saveButtonDiv {
-    grid-column-start: 4;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}

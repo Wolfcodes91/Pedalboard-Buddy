@@ -18,7 +18,7 @@ export default function LoginForm({ setUser, handleClearBoard2, onClose }) {
   async function handleSubmit(evt) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
-    handleClearBoard2(evt)
+    // handleClearBoard2(evt)
     onClose()
     try {
       // The promise returned by the signUp service method 

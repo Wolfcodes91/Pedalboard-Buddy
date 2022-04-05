@@ -2,12 +2,12 @@ import "./BoardPage.css"
 import PedalList from "../../components/PedalList/PedalList"
 import Board from "../../components/Board/Board"
 import LoginModal from "../../components/LoginModal/LoginModal"
+import NavBar from "../../components/NavBar/NavBar"
 import { DragDropContext } from 'react-beautiful-dnd'
 import { useState, useEffect } from "react"
 import * as pedalsAPI from "../../utilities/pedals-api"
 import * as boardsAPI from "../../utilities/boards-api"
-// import BoardSaved from "../../components/BoardSaved/BoardSaved"
-// import { useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 
 
 export default function BoardPage({
@@ -37,11 +37,12 @@ export default function BoardPage({
     isOpen,
     onOpen,
     onClose, 
-    cancelRef
+    cancelRef,
+    handleClearBoard
 }) {
     let boardToFind = '';
-    // const toast = useToast()
-    // const [boardData, setBoardData] = useState()
+    const toast = useToast()
+    let id = 'test-toast'
     const [boardFormData, setBoardFormData] = useState({
         name: "",
     })
@@ -82,7 +83,6 @@ export default function BoardPage({
             let newBoardSpot = [...boardSpot]
             newBoardSpot[destBoard] = removed
             setBoardSpot(newBoardSpot)
-            console.log('boop', boardSpot)
         }
         function moveToList() {
             const newBoard = [...boardSpot];
@@ -124,15 +124,24 @@ export default function BoardPage({
         }
         if (user) {
         evt.preventDefault()
-        console.log(boardFormData, boardSpot)
         const form = {
             name: boardFormData.name,
             layout: boardSpot,
             user: user,
         }
         createPedalboard(form)
-        console.log('GOOD MORNING', form)
+        console.log(id)
         setBoardFormData({ name: "" });
+        toast(
+            {
+                id,
+                title: 'Pedalboard Saved.',
+                description: "Your Pedalboard has been successfully saved",
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+                },  
+        )
         }
     }
 
@@ -141,7 +150,6 @@ export default function BoardPage({
     }
 
     function chooseBoard(evt) {
-        console.log('Choosing board')
         if (boardToFind === '' || boardToFind === undefined) {
             if (userBoards[0] === null) return
             else boardToFind = userBoards[0]
@@ -165,6 +173,16 @@ export default function BoardPage({
         chosenBoard.layout = boardSpot
         updateBoard(chosenBoard)
         console.log(chosenBoard)
+        toast(
+            {
+                id,
+                title: 'Pedalboard Saved.',
+                description: "Your Pedalboard has been successfully updated",
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+                },  
+        )
     }
 
     function handleClearBoard(evt) {
@@ -190,8 +208,7 @@ export default function BoardPage({
             <div className="forms">
                 <form className="form1" onSubmit={chooseBoard}>
                     <span>
-                        <select onChangeCapture={handleUserBoardChange}>
-                            
+                        <select className="select" onChangeCapture={handleUserBoardChange}>
                             {Array.isArray(userBoards) && userBoards.map(option => {
                                 return <option
                                     value={option._id}
@@ -224,9 +241,9 @@ export default function BoardPage({
                     </form>}
 
                 {!chosenBoard &&
-                    <div className="saveButtonDiv">
-                        <form className="form5" onSubmit={handleSavePedalboard}>
+                        <form onSubmit={handleSavePedalboard}>
                             <span>
+                                <div className="form5">
                                 <input
                                     name="name"
                                     type="text"
@@ -235,12 +252,11 @@ export default function BoardPage({
                                     onChange={handleBoardChange}
                                 />
                                 <button className="saveBoardBtn" type="submit">Save New Board</button>
+                                </div>
                             </span>
                         </form>
-                    </div>
                 }
             </div>
-            
         
             <LoginModal 
                 user={user}
@@ -251,10 +267,6 @@ export default function BoardPage({
                 canelRef={cancelRef}
                 onClose={onClose}
             />
-
-            {/* <BoardSaved 
-                toast={toast}
-            /> */}
 
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Board

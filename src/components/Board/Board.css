@@ -14,12 +14,7 @@
 }
 
 .board button {
-    background-color: transparent;
-    border-color: transparent;
-    color: transparent;
-}
-
-.board button:hover {
+    border: solid 0.1vmin transparent;
     background-color: transparent;
 }
 

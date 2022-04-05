@@ -15,7 +15,6 @@ export default function App() {
   const [pedalsList, setPedalsList] = useState([])
   const [activePedal, setActivePedal] = useState(null);
   const [selectedBoard, setSelectedBoard] = useState(null)
-  // const [updatedPedal, setUpdatedPedal] = useState()
   const [updatedBoard, setUpdatedBoard] = useState()
   const [photos, setPhotos] = useState([]);
   const [chosenBoard, setChosenBoard] = useState(null)
@@ -35,11 +34,9 @@ export default function App() {
 
   async function createPedal(formData) {
     const pedal = await pedalsAPI.newPedalCreate(formData)
-    console.log('createPedal', pedal)
     setPedalsList([...pedalsList, pedal])
   }
   async function createPedalboard(form) {
-    console.log('createPedalboard', form)
     const pedalboard = await boardsAPI.newPedalboardCreate(form)
     setUserBoards([...userBoards, pedalboard])
   }
@@ -51,7 +48,6 @@ export default function App() {
   }
 
   async function deleteBoard(board) {
-    console.log(board)
     const boardToDelete = await boardsAPI.deleteABoard(board)
     const upDatedBoardList = userBoards.filter(board => boardToDelete._id !== board._id)
     setUserBoards(upDatedBoardList)
@@ -64,7 +60,6 @@ export default function App() {
   }
 
   async function updateBoard(editData) {
-    console.log(editData, 'function')
     const boardToUpdate = await boardsAPI.updateABoard(editData)
     const updatedBoard = userBoards.map(b => b._id === boardToUpdate._id ? boardToUpdate : b)
     setUpdatedBoard(updatedBoard)
@@ -73,7 +68,6 @@ export default function App() {
   function handleSelectPedal(pedal) {
     setActivePedal(pedal);
   }
-
 
   return (
     <ChakraProvider>
@@ -89,6 +83,8 @@ export default function App() {
         onClose={onClose}
         cancelRef={cancelRef}
         setUserBoards={setUserBoards}
+        boardSpot={boardSpot}
+        setBoardSpot={setBoardSpot}
       />
       <Routes>
         <Route 

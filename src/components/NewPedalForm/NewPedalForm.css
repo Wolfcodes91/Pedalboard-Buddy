@@ -8,7 +8,6 @@
     border-radius: 1vmin;
     width: 25vmin;
     padding: 5vmin;
-    /* height: 48vmin; */
 }
 .newPedalForm form {
     display: flex;
@@ -18,9 +17,13 @@
     width: 20vmin;
 }
 
+.submitButton {
+    background-color: lightgray;
+}
+
 .newPedalForm input, .submitButton, .chooseFileButton, select {
     width: 15vmin;
-    font-size: 1.5vmin;
+    font-size: 2vmin;
 }
 
 button:hover {
@@ -32,4 +35,42 @@ button:hover {
 }
 h3 {
     font-size: 2vmin;
+}
+.chooseFileButton {
+position: absolute;
+opacity: 0;
+z-index: 2;
+height: 6vmin;
+width: 15vmin;
+}
+
+p {
+    font-size: 1.5vmin;
+}
+
+.sizeSelect {
+    font-size: 2vmin;
+}
+
+#fakeButton {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border: solid .1vmin black;
+    border-radius: 1vmin;
+    height: 6vmin;
+    width: 15vmin;
+    font-weight: bold;
+} 
+#fakeButton > img {
+    height: 4vmin;
+    width: 4vmin;
+}
+
+#fakeButton:hover {
+    background-color: goldenrod;
 }

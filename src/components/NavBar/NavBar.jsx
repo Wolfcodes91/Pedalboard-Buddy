@@ -1,17 +1,29 @@
-import { isDOMComponent } from "react-dom/test-utils";
 import { Link } from "react-router-dom"
 import * as userService from '../../utilities/users-service';
 import "./NavBar.css"
 
 
-export default function NavBar({ user, setUser, isOpen, onOpen, onClose, cancelRef, setUserBoards}) {
-    function handleLogOut() {
+export default function NavBar({ user, setUser, onOpen, setUserBoards, boardSpot, setBoardSpot}) {
+    function handleLogOut(evt) {
+        evt.preventDefault()
         userService.logOut();
+        boardSpot = [
+            { number: '0' },
+            { number: '1' },
+            { number: '2' },
+            { number: '3' },
+            { number: '4' },
+            { number: '5' },
+            { number: '6' },
+            { number: '7' },
+        ]
+        setBoardSpot(boardSpot)
         setUser(null);
         setUserBoards(null)
     }
 
-    function handleLogIn() {
+    function handleLogIn(evt) {
+        evt.preventDefault()
         onOpen()
     }
 
@@ -26,9 +38,9 @@ export default function NavBar({ user, setUser, isOpen, onOpen, onClose, cancelR
         }
        &nbsp; | &nbsp;
        { user ?
-       <Link onClick={handleLogOut} to=''>Log Out</Link>
+       <Link onClick={(evt) =>handleLogOut(evt)} to=''>Log Out</Link>
        :
-       <Link onClick={handleLogIn} to=''>Log In</Link>
+       <Link onClick={(evt) =>handleLogIn(evt)} to=''>Log In</Link>
         }
        &nbsp; | &nbsp;
     </nav>

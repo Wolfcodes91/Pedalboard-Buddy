@@ -1,6 +1,6 @@
 nav {
     background: linear-gradient(rgb(213, 233, 250), rgb(172, 249, 250), rgb(156, 238, 223));
-    font-size: larger;
+    font-size: 3vmin;
     border: solid 0.2vmin black;
     border-radius: 1vmin;
     grid-column-start: 1;
@@ -9,9 +9,9 @@ nav {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 10vmin;
+    height: 12vmin;
 }
 
 object {
-    height: 10vmin;
+    height: 12vmin;
 }

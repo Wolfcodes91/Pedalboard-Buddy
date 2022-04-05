@@ -1,4 +1,5 @@
 import AuthPage from '../../pages/AuthPage/AuthPage'
+import "./LoginModal.css"
 import {
     AlertDialog,
     AlertDialogBody,
@@ -19,7 +20,6 @@ onClose={onClose}
 <AlertDialogOverlay>
   <AlertDialogContent>
     <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-      Login
     </AlertDialogHeader>
 
     <AlertDialogBody>
@@ -33,7 +33,9 @@ onClose={onClose}
     </AlertDialogBody>
 
     <AlertDialogFooter>
-    <button onClick={onClose}>X</button>
+    <div className="cancelLogin">
+    <button className="cancelButton" onClick={onClose}>Cancel</button>
+    </div>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialogOverlay>

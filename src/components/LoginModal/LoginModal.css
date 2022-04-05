@@ -1,0 +1,14 @@
+.cancelLogin { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancelButton {
+    background-color: lightgray;
+    padding: 2vmin;
+}
+
+.cancelButton:hover {
+    background-color: crimson;
+}

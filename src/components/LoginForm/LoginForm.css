@@ -17,6 +17,7 @@ form {
 .loginButton {
     width: 30vmin;
     font-size: 2vmin;
+    padding: 2vmin;
 }
 
 .loginButton:hover {
